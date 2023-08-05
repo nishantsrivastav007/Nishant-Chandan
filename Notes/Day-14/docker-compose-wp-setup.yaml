@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mydb:
+    image: mysql:5.7
+    volumes:
+      - "myvol1:/var/lib/mysql"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=tgindia
+      - MYSQL_DATABASE=mypress
+      - MYSQL_USER=ekam
+      - MYSQL_PASSWORD=tg2
+  mycms:
+    image: wordpress:latest
+    depends_on:
+      - mydb
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=mydb:3306
+      - WORDPRESS_DB_USER=ekam
+      - WORDPRESS_DB_PASSWORD=tg2
+      - WORDPRESS_DB_NAME=mypress
+    volumes:
+      - "myvol2:/var/www/html"
+volumes:
+   myvol1:
+   myvol2:

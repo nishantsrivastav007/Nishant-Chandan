@@ -1,0 +1,56 @@
+In order to safely use Secrets, take at least the following steps:
+
+Enable Encryption at Rest for Secrets.
+Enable or configure RBAC rules with least-privilege access to Secrets.
+Restrict Secret access to specific containers.
+Consider using external Secret store providers.
+
+-----------------------------------------------------------------------
+
+Secret in k8s  (sestive information save here : MySQL / Postgresql password)
+https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/
+
+->  kubectl create secret generic mysqlinfo --from-literal=password=redhat -n tg
+
+-> kubectl get secrets -n tg
+
+->  kubectl describe secret mysqlinfo -n tg
+
+-> kubectl get secret mysqlinfo -o jsonpath='{.data}' -n tg
+
+	o/p -->  {"password":"cmVkaGF0"}
+	
+ Decrypt the secret :
+
+echo "cmVkaGF0"  | base64 --decode
+
+--------------------------------------------------------------------
+
+Config map  (Password save in plain text)
+https://www.sslshopper.com/certificate-decoder.html
+
+
+kubectl get cm -n tg
+
+kubectl  describe cm kube-root-ca.crt
+
+Jenkins --> Pipeline project with Git + Docker + K8s + aws
+
+---------------------------------------------
+Resources allotment for Deployment :
+	->  PVC 
+STS applications :
+	->  PVC
+
+---------------------------------------------
+
+Assingments :
+	
+	1. Launch wordpress website (Apache + Php --> 2 PODS)
+								  (MySQL / Mariadb --> 3 PODS)
+								  
+	Kindly attach volume for both Webserver pod and Database Pod.
+	
+	2.  Harbor setup on EC2 instance for private Docker images. 
+			( EC2 Instance manually setup  )
+		

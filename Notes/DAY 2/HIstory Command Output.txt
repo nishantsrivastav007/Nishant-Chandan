@@ -1,0 +1,205 @@
+    1  sudo su 
+    2  pwd
+    3  ls -l/
+    4  ls -l /
+    5  ls -l 
+    6  pwd
+    7  ls -l /
+    8  ls -l /tmp/
+    9  ls -l  /opt/
+   10  ls -l /root/
+   11  ls -l  /boot/
+   12  ls -l /
+   13  ls 
+   14  pwd
+   15  whoami 
+   16  pwd
+   17  exit
+   18  pwd
+   19  cd  /opt/
+   20  pwd
+   21  cd
+   22  cd  /opt/
+   23  ls 
+   24  cd 
+   25  cd /etc/
+   26  pwd
+   27  ls
+   28  pwd
+   29  ls -l  
+   30  ll
+   31  pwd
+   32  cd
+   33  pwd
+   34  cd  /etc/
+   35  pwd
+   36  cd ..
+   37  cd 
+   38  pwd
+   39  ls -l
+   40  ls -la
+   41  ls -l 
+   42  ls -al
+   43  ls -al 
+   44  cd .
+   45  pwd
+   46  cd ..
+   47  pwd
+   48  ls 
+   49  ls -la
+   50  pwd
+   51  whoami 
+   52  cd ~
+   53  pwd
+   54  cd -
+   55  pwd
+   56  cd
+   57  cd -
+   58  cd ~
+   59  pwd
+   60  mkdir -p  Asia/India/Rajasthan/Bikaner/TG1
+   61  pwd
+   62  ls -l
+   63  ls -l 
+   64  cd  Asia/
+   65  ll
+   66  cd India/Rajasthan/Bikaner/TG1/
+   67  pwd
+   68  cd .
+   69  pwd
+   70  cd .
+   71  pwd
+   72  cd  ..
+   73  pwd
+   74  cd ..
+   75  pwd
+   76  cd ..
+   77  pwd
+   78  cd ..
+   79  pwd
+   80  cd Asia/India/Rajasthan/Bikaner/TG1/
+   81  pwd
+   82  cd
+   83  pwd
+   84  cd Asia/India/Rajasthan/Bikaner/TG1/
+   85  cd ../../../../India/
+   86  cd
+   87  mkdir Tech
+   88  touch mycity.txt
+   89  ls -l 
+   90  pwd
+   91  ls -l
+   92  touch myjaipurCity.txt
+   93  touch mycountry.txt
+   94  ls -l 
+   95  date 
+   96  ls -ltr 
+   97  echo "Hello World" > mycity.txt 
+   98  ls -ltr 
+   99  history 
+  100  clear
+  101  ls -ltr
+  102  ls -ltr 
+  103  ls -ltr
+  104  cat  mycity.txt 
+  105  cat > mydata.txt
+  106  ls -ltr
+  107  cat mydata.txt 
+  108  cat  mydata.txt
+  109  head mydata.txt 
+  110  head -2  mydata.txt 
+  111  tail  -2  mydata.txt 
+  112  tail   mydata.txt 
+  113  cat  /etc/os-release 
+  114  yum install httpd -y
+  115  systemctl start httpd
+  116  netstat  -plant 
+  117  netstat  -plantu
+  118  netstat  -plant 
+  119  netstat  -plant
+  120  man netstat
+  121  man cd
+  122  man pwd
+  123  cd  /var/log/httpd/
+  124  pwd
+  125  ls -ltr 
+  126  tail  access_log 
+  127  tail -f  access_log 
+  128  pwd
+  129  cd  /var/www/html/
+  130  echo "<h1> Welcome to DevOps + linux  training at TG </h1>"  
+  131  pwd
+  132  echo "<h1> Welcome to DevOps + linux  training at TG </h1>"  > index.html
+  133  ls -ltr
+  134  tail -f  /var/log/httpd/access_log 
+  135  systemctl  stop httpd
+  136  ps aux  |  grep  httpd 
+  137  kill -9 4768 5104 5106 5330
+  138  ps aux  |  grep  httpd 
+  139  systemctl  stop httpd
+  140  systemctl  status httpd
+  141  history 
+  142  tail -f  /var/log/httpd/access_log 
+  143  cd 
+  144  ls -l
+  145  ls -ltr 
+  146  ls -il
+  147  ls -li
+  148  man ln 
+  149  pwd
+  150  ls -ltr
+  151  cat mydata.txt 
+  152  pwd
+  153  ln  -s /root/mydata.txt  /opt/
+  154  ls -ltr 
+  155  cd /opt/
+  156  pwd
+  157  ls -ltr 
+  158  ls -il 
+  159  ls -iltr
+  160  ls -iltr  /root/
+  161  cd
+  162  pwd
+  163  ls -itl
+  164  ls -ltr
+  165  rm -f mydata.txt 
+  166  ls -iltr
+  167  cd /opt/
+  168  ls -itlr
+  169  cat mydata.txt 
+  170  cd
+  171  ls -ltr
+  172  ls -ltri
+  173  cat mycity.txt 
+  174  ls -iltr
+  175  ln  /root/mycity.txt /opt/
+  176  cd /opt/
+  177  ls -ltr
+  178  cat mycity.txt 
+  179  ls -iltr
+  180  cd 
+  181  ls -iltr
+  182  rm -f mycity.txt 
+  183  ls -iltr
+  184  cd  /opt/
+  185  ls -iltr
+  186  cat  mycity.txt 
+  187  cd
+  188  ifconfig 
+  189  ip addr
+  190  ip a
+  191  cat /etc/hosts
+  192  yum install net-tools  bind-utils -y
+  193  yum install nmcli
+  194  ifconfig 
+  195  ip a
+  196  ip addr
+  197  cat /etc/hosts
+  198  ip route 
+  199  curl  ifconfig.io
+  200  curl  ifconfig.me
+  201  ifconfig 
+  202  curl ifconfig.io
+  203  man cat
+  204  curl ifconfig.io
+  205  history  >  myhistory.txt

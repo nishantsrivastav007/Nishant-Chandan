@@ -1,0 +1,456 @@
+    1  man less
+    2  man more 
+    3  less /etc/acpi/actions/power.sh 
+    4  more /etc/acpi/actions/power.sh 
+    5  less /etc/acpi/actions/power.sh 
+    6  cat  /etc/acpi/actions/power.sh 
+    7  cat  /etc/acpi/actions/power.sh  
+    8  less /etc/acpi/actions/power.sh  
+    9  cat  /etc/acpi/actions/power.sh | grep -i gnome --color
+   10  cat  /etc/acpi/actions/power.sh grep -i gnome --color
+   11  cat  /etc/acpi/actions/power.sh |  grep -i null --color
+   12  cat  /etc/acpi/actions/power.sh |  grep -i null
+   13  man df
+   14  df -hT
+   15  lsblk
+   16  df -h
+   17  df -hT
+   18  ls -l  /
+   19  whoami 
+   20  which whoami
+   21  which  pwd
+   22  which  mkdir
+   23  ls -l  /usr/local/bin/
+   24  ls -l  /usr/bin/
+   25  ls -l  /usr/bin/pwd
+   26  ls   /
+   27  ls -l  /sbin/
+   28  uname -r
+   29  ls  /lib64/
+   30  ls  /lib/
+   31  df -hT 
+   32  ls -ltr 
+   33  touch  aa.txt
+   34  mkdir  TgIndia
+   35  ls -ltr 
+   36  ls -iltr 
+   37  du -hs TgIndia/
+   38  du -hs TgIndia
+   39  du -hs aa.txt 
+   40  du -hs *
+   41  du -hs  /
+   42  du -hs  /etc/
+   43  du -hs  /tmp/
+   44  du -hs  /usr/
+   45  du -hs  /bin/
+   46  cd /
+   47  pwd
+   48  du -hs *
+   49  cd 
+   50  pwd
+   51  free -gh
+   52  free -mh
+   53  free -hg
+   54  cat  /proc/cpuinfo 
+   55  cat  /proc/meminfo 
+   56  top
+   57  whoami 
+   58  id
+   59  exit
+   60  less  /etc/passwd
+   61  cat  /etc/passwd  |   grep  '/sbin/nologin'
+   62  cat  /etc/passwd  |   grep  '/sbin/nologin'  | wc -l 
+   63  cat  /etc/passwd  |   grep  '/bin/bash'  | wc -l 
+   64  cat  /etc/passwd  |   grep  '/bin/bash' 
+   65  cat  /etc/passwd |  grep  '/bin/bash' | wc -l 
+   66  cat  /etc/passwd |  grep  '/bin/bash'   >  tgIndiainfo.txt 
+   67  ls -ltr 
+   68  cat  tgIndiainfo.txt 
+   69  cat  /etc/passwd |  grep  '/sbin/nologin'   >>  tgIndiainfo.txt 
+   70  cat  tgIndiainfo.txt 
+   71  less  /etc/passwd
+   72  cat  /etc/passwd  |  grep  '/bin/bash'  
+   73  cat  /etc/passwd  |  grep  '/sbin/login'  
+   74  cat  /etc/passwd  |  grep  '/sbin/nologin'  
+   75  cat  /etc/passwd  |  grep  '/bin/bash'  
+   76  cat  /etc/passwd  |  grep  '/sbin/nologin'   | wc -l 
+   77  cat  /etc/passwd  |  grep  '/sbin/nologin'  >  mysbindata.txt
+   78  cat  mysbindata.txt 
+   79  ls -ltr 
+   80  ps  aux | less
+   81  top
+   82  useradd  mahinder
+   83  ls -l  /home/
+   84  useradd  harman
+   85  ls -l  /home/
+   86  whoami 
+   87  id
+   88  passwd  mahinder
+   89  passwd  harman
+   90  ls -l  /home/
+   91  passwd
+   92  passwd  harman
+   93  ls -l /home/
+   94  su - harman
+   95  su - mahinder
+   96  who
+   97  whoami 
+   98  useradd nitin
+   99  passwd nitin
+  100  whoami 
+  101  su - nitin
+  102  cat /etc/passwd  | grep ec2-user
+  103  cat /etc/shadow
+  104  groupadd tgIndia
+  105  less  /etc/group
+  106  ls -ltr 
+  107  hostname
+  108  chmod  700  aa.txt 
+  109  ls -ltr 
+  110  chmod  750  aa.txt 
+  111  ls -ltr 
+  112  chmod 000  aa.txt 
+  113  ls -ltr 
+  114  chmod 400  aa.txt 
+  115  ls -ltr 
+  116  chmod  700  TgIndia/
+  117  ls -ltr 
+  118  ls -l  TgIndia/
+  119  ls -la  TgIndia/
+  120  ls -ltr 
+  121  chmod 400 mysbindata.txt 
+  122  ls -ltr 
+  123  chmod  ugo-rwx  mysbindata.txt 
+  124  ls -ltr mysbindata.txt 
+  125  chmod    mysbindata.txt 
+  126  ls -ltr mysbindata.txt 
+  127  chmod  ugo-rwx  mysbindata.txt 
+  128  ls -ltr mysbindata.txt 
+  129  chmod  a=rwx  mysbindata.txt 
+  130  ls -ltr mysbindata.txt 
+  131  ls -ltr 
+  132  chown   harman  aa.txt 
+  133  ls -ltr 
+  134  chgrp   TgIndia  aa.txt 
+  135  chgrp   tgIndia  aa.txt 
+  136  ls -ltr 
+  137  chown  mahinder:tgIndia   mysbindata.txt 
+  138  ls -l  mysbindata.txt 
+  139  chown  harman:tgIndia   TgIndia/   -R
+  140  ls -ltr 
+  141  cd TgIndia/
+  142  ls -ltr
+  143  touch  xyz.txt
+  144  ls -ltr 
+  145  chown  harman:tgIndia   TgIndia/   -R
+  146  cd 
+  147  chown  harman:tgIndia   TgIndia/   -R
+  148  ls -ltr  TgIndia/
+  149  touch   TgIndia/jaipur.txt
+  150  ls -ltr TgIndia/
+  151  ls -ltr 
+  152  man chattr
+  153  ls -ltr 
+  154  chattr +a  aa.txt 
+  155  ls -ltr 
+  156  chattr +i  TgIndia/ 
+  157  ls -ltr 
+  158  man chattr
+  159  usermod -s  /sbin/nolgin harman
+  160  su - harman 
+  161  usermod -u  15001  harman
+  162  id  harman 
+  163  usermod -e 2023-12-31  mahinder
+  164  chage mahinder 
+  165  cat /etc/shadow
+  166  man usermod
+  167  cat /etc/passwd  |  grep root
+  168  usermod  -c  "Root Kumar" root
+  169  cat /etc/passwd  |  grep root
+  170  ls -ltr 
+  171  touch userinfo.sh
+  172  ls -ltr 
+  173  chmod  u+x  userinfo.sh 
+  174  ls -ltr 
+  175  ./userinfo.sh 
+  176  touch mydata.sh
+  177  ls -ltr 
+  178  chmod  700  mydata.sh 
+  179  ls -ltr 
+  180  su  -  harman
+  181  su  -  mahinder
+  182  mkdir /tgIndia
+  183  ls -ld  /tgIndia/
+  184  chown mahinder:mahinder  /tgIndia/
+  185  ls -ld  /tgIndia/
+  186  usermod  -d  mahinder /tgIndia
+  187  usermod  -d /tgIndia mahinder
+  188  ls -ld  /tgIndia/
+  189  cp   /home/mahinder/.*  /tgIndia/
+  190  ls  -la  /home/mahinder/
+  191  su  - mahinder
+  192  whoami 
+  193  date
+  194  timedatectl set-timezone 'Asia/Kolkata'
+  195  date
+  196  hostname
+  197  hostnamectl set-hostname www.tgindia.com
+  198  hostname
+  199  bash
+  200  ls -ltr /home/
+  201  usermod  -G  tgIndia  mahinder,nitin,harman
+  202  usermod  -G  tgIndia  mahinder
+  203  usermod  -G  tgIndia  harman
+  204  usermod  -G  tgIndia  nitin
+  205  cat /etc/group  |  grep  tgIndia
+  206  cat  /etc/shadow
+  207  ls -ltr 
+  208  vi  /etc/sudoers
+  209  su  - nitin
+  210  su  - mahinder
+  211  su - mahinder
+  212  su  -  manish
+  213  inti 0 
+  214  init 0 
+  215  df -hT 
+  216  rpm -qa  |  grep efs
+  217  yum install -y amazon-efs-utils
+  218  rpm -qa  |  grep efs
+  219  ls -l 
+  220  ls -ltr 
+  221  mkdir -p  /mnt/grras
+  222  mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-00235341e2761bd2d.efs.ap-south-1.amazonaws.com:/  /mnt/grras/
+  223  sudo mount -t efs -o tls fs-00235341e2761bd2d:/ efs
+  224  mkdir  efs
+  225  ls -ltr
+  226  ls -ltr 
+  227  pwd
+  228  mount -t efs -o tls fs-00235341e2761bd2d:/ efs
+  229  sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport 172.31.33.137:/ efs
+  230  sudo mount -t efs -o tls fs-00235341e2761bd2d:/ efs
+  231  df -hT 
+  232  umount /root/efs/
+  233  df -hT 
+  234  sudo mount -t efs -o tls fs-00235341e2761bd2d:/ /mnt/grras/
+  235  df -hT 
+  236  cd  /mnt/grras/
+  237  mkdir aa
+  238  touch  bb
+  239  echo  "Welcome to EFS  sharing "  >  mysite.txt
+  240  ls -ltr 
+  241  df -hT 
+  242  pwd
+  243  ls -ltr 
+  244  pwd
+  245  ls -ltr 
+  246  cat mysite.txt 
+  247  ls -ltr 
+  248  cd 
+  249  umount  /mnt/grras/
+  250  df -hT 
+  251  vi  /etc/fstab 
+  252  mount -a
+  253  vi  /etc/fstab 
+  254  mount -a 
+  255  vi  /etc/fstab 
+  256  mount -a 
+  257  df -hT 
+  258  cd  /mnt/grras/
+  259  ls -ltr 
+  260  yum install nfsv4*
+  261  yum install nfs
+  262  yum install *nfs*
+  263  yum install nfs-utils
+  264  man  nfs
+  265  vi /etc/fstab 
+  266  mount -a 
+  267  df -hT 
+  268  umount /mnt/grras/
+  269  cd 
+  270  umount /mnt/grras/
+  271  df -hT 
+  272  history  
+  273  ls -l 
+  274  pwd
+  275  ls -l /opt/
+  276  ls -l  /tmp/
+  277  ls -ltr 
+  278  cp -v  /root/mydata.sh  /opt/ 
+  279  ls -l /opt/
+  280  ls -ltr 
+  281  pwd
+  282  cp -vrd /root/TgIndia/     /opt/
+  283  ls -l  /opt/TgIndia/
+  284  ls -l  /opt/
+  285  history 
+  286  cp  -v  mydata.sh tgIndiainfo.txt  aa.txt mysbindata.txt  /opt/
+  287  ls -ltr /opt/
+  288  ls -ltr 
+  289  rm -i mydata.sh 
+  290  ls -ltr 
+  291  rm -f userinfo.sh 
+  292  ls -ltr 
+  293  history 
+  294  mkdir -p  A/B/C/D/
+  295  ls -ltr 
+  296  cp tgIndiainfo.txt mysbindata.txt aa.txt   A/B/C/D/
+  297  ls -ltr A/B/C/D/
+  298  rm -ir A/
+  299  mkdir  -p  Xyz/P/Q/R/S
+  300  cp  tgIndiainfo.txt mysbindata.txt aa.txt   Xyz/P/Q/R/S/
+  301  ls -ltr 
+  302  rm  -rf  A/
+  303  rm  -rf  Xyz/
+  304  ls -ltr 
+  305  mkdir -p Rajasthan/Jaipur/Bikaner/Trainer/Linux
+  306  touch  Rajasthan/Jaipur/Bikaner/Trainer/Linux/aa{1,2,3,4,5}.txt
+  307  ls -ltr  Rajasthan/Jaipur/Bikaner/Trainer/Linux/
+  308  rm -ir  Rajasthan/
+  309  y
+  310  ls -ltr 
+  311  mv /root/TgIndia/   /tmp/
+  312  mv /root/TgIndia   /tmp/
+  313  ls -ltr 
+  314  rm -rf  TgIndia/
+  315  rm -rf  TgIndia
+  316  ls -ltr 
+  317  chattr -a TgIndia/
+  318  rm -rf  TgIndia
+  319  mkdir  Xyz/Pqr/A/B/C/D
+  320  mkdir -p  Xyz/Pqr/A/B/C/D
+  321  cp  aa.txt  mysbindata.txt tgIndiainfo.txt  Xyz/Pqr/A/B/C/D/
+  322  ls -ltr
+  323  mv /root/Xyz/  /opt/
+  324  ls -ltr 
+  325  ls -l  /opt/
+  326  mv  /opt/Xyz/   /tmp/
+  327  ls -ltr  /tmp/
+  328  ls -ltr 
+  329  mv  tgIndiainfo.txt  /tmp/
+  330  ls -ltr 
+  331  mv  /root/mysbindata.txt   /root/mahinderdata.txt
+  332  ls -ltr 
+  333  history 
+  334  hostname
+  335  ssh root@172.31.36.96
+  336  cat  .ssh/authorized_keys 
+  337  hostname
+  338  ifconfig 
+  339  ssh-keygen  -t rsa
+  340  ls -la 
+  341  cat .ssh/id_rsa
+  342  cat  .ssh/id_rsa.pub 
+  343  ls -la 
+  344  cd .ssh/
+  345  ls -la 
+  346  cat  id_rsa.pub 
+  347  ssh root@172.31.36.96
+  348  ssh -vvv root@172.31.36.96
+  349  ssh  root@172.31.36.96
+  350  cd
+  351  ssh  root@172.31.36.96
+  352  ls -ltr 
+  353  ssh -vvv  root@172.31.36.96
+  354  ls -la  .ssh/
+  355  ssh -vvv  root@172.31.36.96
+  356  w
+  357  ssh -vvv  root@172.31.36.96
+  358  ssh-keygen  -t ed25519
+  359  cat .ssh/id_ed25519.pub 
+  360  ls -la  .ssh/
+  361  cd  .ssh/
+  362  ls -la 
+  363  chmod  400  id_rsa
+  364  ls -ltr
+  365  chmod  400  id_rsa.pub 
+  366  ls -ltr 
+  367  ssh -vvv  root@172.31.36.96
+  368  ssh   root@172.31.36.96
+  369  ls -la 
+  370  rm  -f  id_ed25519.pub 
+  371  rm  -f  id_ed25519 
+  372  ls -ltr 
+  373  ifconfig 
+  374  cd
+  375  ssh   root@172.31.36.96
+  376  ls -la  .ssh/
+  377  ssh  -vvv  root@172.31.36.96
+  378  cd  .ssh/
+  379  ls -la 
+  380  rm -f  id_rsa id_rsa.pub 
+  381  ls -la 
+  382  ssh-keygen  -t ed25519
+  383  ls -la 
+  384  pwd
+  385  cat  id_ed25519.pub 
+  386  cat authorized_keys 
+  387  cd
+  388  ssh  -vvv  root@172.31.36.96
+  389  ssh -v  root@172.31.36.96
+  390  hostnamectl set-hostname master.tg.com
+  391  bash 
+  392  ls -la .ssh/
+  393  cat .ssh/known_hosts 
+  394  ssh -v  root@172.31.36.96
+  395  ls -l 
+  396  scp mahinderdata.txt root@172.31.36.96:/tmp/
+  397  mkdir A
+  398  hi
+  399  history 
+  400  du  -hs /etc/
+  401  tar cpf etc_backup_20230409.tar  /etc/ 
+  402  ls -ltr 
+  403  du  -hs /etc/
+  404  du -hs etc_backup_20230409.tar 
+  405  du  -hs /etc/
+  406  man tar 
+  407  tar -tvf  etc_backup_20230409.tar 
+  408  ls -ltr 
+  409  tar cpfz  mynew_etc_backup.tar.gz  /etc/
+  410  ls -ltr 
+  411  du -hs *
+  412  du -hs /etc/
+  413  ls 
+  414  man tar
+  415  tar xfh  mynew_etc_backup.tar.gz  .
+  416  tar xfh  mynew_etc_backup.tar.gz 
+  417  ls -ltr
+  418  ls -ltr 
+  419  du  -hs  etc
+  420  ls -ltr 
+  421  ls -ltr /opt/
+  422  ls 
+  423  tar xfh  etc_backup_20230409.tar   -C  /opt/
+  424  ls -ltr  /opt/
+  425  cat  /etc/crontab 
+  426  crontab  -e
+  427  date 
+  428  timedatectl set-timezone 'Asia/Kolkata'
+  429  date 
+  430  crontab  -e 
+  431  crontab  -l 
+  432  mail
+  433  yum install mailx
+  434  mail
+  435  date 
+  436  crontab  -l 
+  437  date 
+  438  mail 
+  439  date 
+  440  mail 
+  441  tty
+  442  date 
+  443  crontab  -e 
+  444  crontab  -l
+  445  date
+  446  crontab  -e
+  447  crontab  -l 
+  448  date
+  449  l s-ltr 
+  450  ls -ltr 
+  451  crontab  -l 
+  452  date 
+  453  crontab -e
+  454  systemctl  status httpd 
+  455  history   >   history-9-4-2023.txt
+  456  history   >   /opt/history-9-4-2023.txt

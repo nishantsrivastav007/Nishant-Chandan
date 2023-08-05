@@ -1,0 +1,366 @@
+sudo -i
+*.pem  -->  *.ppk  (puttyKeyGen)
+sudo su -
+
+	Delhi  -->  Eye Close  --> Australia 
+	ec2-user	 				root         ec2-user
+	
+	sudo su -
+	
+	sudo su   ( Existing user home directory) 
+	
+	sudo su -
+	
+	
+dr-xr-xr-x     4          root      root     4096    Mar 21 22:01 boot
+  permission   SymLink    Owner     Group     Size     Date/Time  Dir
+  
+  
+  
+ls 
+ls -l 
+ls -la
+ls -ltr 
+
+ls -al 
+
+.     -> Current File System
+..    -> Prevous File System
+
+
+whoami
+id
+pwd
+cd 
+	.
+	..
+ls 
+ls -l
+ls -la
+ls -ltr
+
+mkdir 
+echo "hihi"  >  hello.txt
+
+touch bye.txt
+
+init 0
+----------------------------------------
+cat  hello.txt 
+tail -f  
+head
+tail 
+
+Apache Web server :
+	80   http://
+	443  https://
+
+RHEL ->  yum
+DEBIAN (ubuntu) -> apt-get 
+
+
+yum install httpd -y
+
+systemctl  status  httpd
+
+systemctl start httpd 
+
+Open port in Security group of AWS EC2 instance ( 80 / 443)
+
+netstat -plant 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+
+Customize webpage
+
+cd /var/www/html/
+
+echo "hello world"  > index.html
+
+systemctl restart httpd 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+	
+Read log frequently :
+
+cd  /var/log/httpd/
+
+ls -ltr 
+
+tail -f  access_log
+
+--------------------------------------
+Soft Link vs Hard Link :
+
+ln 
+	Soft Link  ->  Short-Cut	 (-s)
+	Hard Link  ->  Store at differnt Memory address
+
+inode number ( Unique Integer number) 
+
+ls -iltr
+
+Soft Link ( Differ  inode)
+
+ln -s  mydata.txt  /opt/
+
+/root/mydata.txt   -->    /opt/mydata.txt
+
+	If we delete origional file of symlink, then link file will treated Dangling link.
+
+Hard link :
+
+		- same inode number 
+		- If we delete origional of that link, hard link will work as actual file.
+----------------------------------------	
+network commands:
+	ifconfig
+	nmcli		(need to install when we read RPM command)
+	ip a 
+	ip addr
+	ip route
+	cat /etc/hosts
+	curl ifconfig.io
+	netstat -plant
+	man 
+	cat
+-------------------------------------	
+	less  
+
+	more
+	
+Linux FHS
+
+	df -hT
+				/  ->  Main file system 
+				/dev  -> HDD + USB + CDROM mount here 
+				/bin/ -> Binary command  (ls , pwd, mkdir)
+				/sbin/ -> system binary (OS)
+				/home/ ->  Local user create  (By default)
+					/home/tgIndia/
+					/home/Mahindra/
+				
+				/usr/  -> user file system  (Program files)
+		/var/  ->  variable file system  (Web Hosting) most of 		the servers are exist here. 
+		/srv/
+			
+				/etc/   ->  Configuraton file system (Config files)
+				/opt/  -> optional file system 
+				/mnt/  -> mount point 
+				/tmp/  -> temp file system  (30 days data can store) 
+				
+		mount point  -->  logical location where partition availble for access.
+			/			\
+		  Temp FS			Parmanent FS
+	
+				/lib/
+				/lib64/
+	Kernel ->  Itermediate unit (OS Software) Intraction between h/w and s/w.			
+			(Kernel is collection of multiple modules
+						Bluetooth module
+						wifi module
+						Graphics module)
+						
+	Linux   ->   Kernel 
+	
+	Linux Operating System  -> Kernel + applications
+------------------------------------------------------------------	
+	Unix :   HP-UX , IBM - AIX , Sun Microsystem , Apple ios
+------------------------------------------------------------------
+	du 
+		->  Disk Usages 
+		
+	Ex:    du  -hs  <File-or-Dir>
+		
+			du -hs  *
+				
+	pwd
+	
+	free -gh 
+	
+			(Diff b/w buffer and cache memory)
+	cat  /proc/meminfo
+	cat  /proc/cpuinfo
+	
+	id
+			uid	- user id 
+			gid - group id
+
+/etc/passwd
+
+root   :x:         0:     0     :root:   /root/:             /bin/bash
+Uname   Password   UID    GID    Gcos    Home Directory        shell
+							(Comment Area)
+
+User / Process
+		
+		0  ->  root (Super user)
+		1-999 -> process  (Mysql database, Apache webserver, Oracle)
+			
+				1 ->  PID ->  SystemD (init)
+		
+		1000 - 65k (Local Users range)
+/etc/passwd   
+			->  /sbin/nologin  (System)
+			->  /bin/bash  (User can login)
+				
+					>    -> STDOUTPUT operator
+					>>  -> Append operator
+					<  ->  STDINPUT operator
+
+
+cat  /etc/passwd |  grep  '/sbin/nologin'   >  tgIndiainfo.txt
+
+cat  /etc/passwd |  grep  '/bin/bash'   >>  tgIndiainfo.txt
+
+-------------------------------------------------------	
+ps aux  |  less 
+
+top 
+
+ps -> process 
+	a -> all
+	u -> user
+	x -> executable 
+	
+Daemon   ->  Background Process are k/as  daemons
+				(Antivirus / Clock / apache web server)
+Zoombiee -> 
+
+-------------------------------------------------------
+useradd    or  adduser
+
+passwd
+
+ls -l  /home/
+
+When we create user in Linux OS , where its password and structure create ?
+
+	Local user Schema -->   /etc/passwd
+	Password  -> 		    /etc/shadow 
+Hint for Shadow Encryption Algorithm -->  https://www.cyberciti.biz/faq/understanding-etcshadow-file/#:~:text=%246%20%E2%80%93%20The%20hashing%20algorithm%20prefix,Linux%20but%20not%20common%20elsewhere.
+
+	
+	group  ->  			  /etc/group
+	group password  -->  /etc/gshadow
+ 
+groupadd tgIndia
+--------------------------------------------------
+Permission in Linux OS
+	
+	r   read 		4
+	w   write		2
+	x	execute		1
+				-------
+	rwx				7
+					
+
+				USer/Owner    Group   	Others 
+
+
+- rw-  r--  r-- 1 root 			root    0 Apr  8 03:30 aa.txt
+   6    4    4
+
+d rwx  r-x r-x 2  root 			root    6 Apr  8 03:30 TgIndia
+   7    5   5
+
+Permission bits =  10 bits 
+
+
+			7		5		 0  
+			rwx    r-x		---
+		
+			7		7		7
+		rwx			rwx		rwx
+
+u		user
+g		group
+o		other
+
+a		all
+
++		allow
+-       deny
+=       assign
+--------------------------------------------------
+
+	chmod   -->  Change Modification of permission bit 
+	chown	 -> Change ownership of file / dir
+	chgrp	->  Change group ownership
+	
+Special permission 
+		Stricky bit
+		SGID
+		SUID
+---------------------------------------------------	
+		Group
+	/			\
+ P. Group		Supplimentry / Secondary Group
+	-g     				-G
+	(1)					(n)
+
+---------------------------------------------------
+	chattr
+	
+	usermod
+	
+	uname 
+	
+	timedatectl
+	
+	hostnamectl
+---------------------------------------------------	
+	cp  
+	rm
+	mv
+--------------------------------------------------
+	ssh-keygen
+	scp
+	tar 
+	
+	cronjob
+	
+	yum / dnf / rpm 
+	
+	ps 
+	kill
+	top
+	htop
+	nice
+	renice
+	
+	
+	nmap
+	host
+	dig
+	nslookup
+	
+	screen
+	last
+	lastlog
+	w
+	whoami
+	which
+	whereis
+	
+	
+	grep  -> Pattern find (like operater in SQL)  
+	
+		cat  /etc/acpi/actions/power.sh | grep -i gnome --color
+		
+	pgrep
+----------------------------------------	
+	cut 
+	
+	awk
+	
+	sed
+	
+------------------------------------
+
+
+

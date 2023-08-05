@@ -1,0 +1,138 @@
+sudo -i
+*.pem  -->  *.ppk  (puttyKeyGen)
+sudo su -
+
+	Delhi  -->  Eye Close  --> Australia 
+	ec2-user	 				root         ec2-user
+	
+	sudo su -
+	
+	sudo su   ( Existing user home directory) 
+	
+	sudo su -
+	
+	
+dr-xr-xr-x     4          root      root     4096    Mar 21 22:01 boot
+  permission   SymLink    Owner     Group     Size     Date/Time  Dir
+  
+  
+  
+ls 
+ls -l 
+ls -la
+ls -ltr 
+
+ls -al 
+
+.     -> Current File System
+..    -> Prevous File System
+
+
+whoami
+id
+pwd
+cd 
+	.
+	..
+ls 
+ls -l
+ls -la
+ls -ltr
+
+mkdir 
+echo "hihi"  >  hello.txt
+
+touch bye.txt
+
+init 0
+----------------------------------------
+cat  hello.txt 
+tail -f  
+head
+tail 
+
+Apache Web server :
+	80   http://
+	443  https://
+
+RHEL ->  yum
+DEBIAN (ubuntu) -> apt-get 
+
+
+yum install httpd -y
+
+systemctl  status  httpd
+
+systemctl start httpd 
+
+Open port in Security group of AWS EC2 instance ( 80 / 443)
+
+netstat -plant 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+
+Customize webpage
+
+cd /var/www/html/
+
+echo "hello world"  > index.html
+
+systemctl restart httpd 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+	
+Read log frequently :
+
+cd  /var/log/httpd/
+
+ls -ltr 
+
+tail -f  access_log
+
+--------------------------------------
+Soft Link vs Hard Link :
+
+ln 
+	Soft Link  ->  Short-Cut	 (-s)
+	Hard Link  ->  Store at differnt Memory address
+
+inode number ( Unique Integer number) 
+
+ls -iltr
+
+Soft Link ( Differ  inode)
+
+ln -s  mydata.txt  /opt/
+
+/root/mydata.txt   -->    /opt/mydata.txt
+
+	If we delete origional file of symlink, then link file will treated Dangling link.
+
+Hard link :
+
+		- same inode number 
+		- If we delete origional of that link, hard link will work as actual file.
+----------------------------------------	
+network commands:
+	ifconfig
+	nmcli		(need to install when we read RPM command)
+	ip a 
+	ip addr
+	ip route
+	cat /etc/hosts
+	curl ifconfig.io
+	netstat -plant
+-------------------------------------	
+	nmap
+	
+	host
+	dig
+	nslookup
+------------------------------------
+man  cat
+
+

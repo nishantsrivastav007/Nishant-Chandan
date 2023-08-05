@@ -1,0 +1,109 @@
+Coder ---> Code (Java / Php / .net / DevOps (Yaml) )
+			
+			Pen Drive / DvD
+
+				PC1  -->  PC2
+---------------------------------------------------------
+
+			Source Code Management 
+			/					\
+	CVCS						DVCS
+	Centrelised Version			Distributed Versioning Control System
+	Control System
+		(SVN)						(Git)
+		
+								git  ->  Software (open source & freeware)
+								github    /  gitlab -> Storage for your code saving
+								Microsoft	  Opensource 
+	
+	
+stages of Local Repo : 
+
+			
+		1) Working Space  
+				|  Add 
+		2) Staging Area
+				|   Commit  (Snapshot)
+		3) Master Branch (Local Repo)
+-----------------------------------------------------------------		
+Steps to install git software on local machine / Cloud machine:
+
+1)	yum update -y
+
+2)	yum install git  -y
+
+3)	mkdir tg
+		
+4)	cd tg
+	
+5)	git init 
+	
+6)	ls -la
+
+7)	git --version
+    
+8)	git config --global user.name "mahindra"
+    
+9)	git config --global user.email "tgindia@tg.com"
+    
+10)	git config --list
+
+11)  You can create account on github.com  / gitlab.com
+11.1)   We need to cereate Repo on github.com (After login)
+--------------------------------------------------------------
+locgical Stages of Local repo in git software:
+
+	1)  Working Area (Workspace )   -->   /root/tg/
+			|  Add
+	2)  Staging Area
+			|  Commit  (Save / Snapshot)
+	3)  local repo  (Master)  
+--------------------------------------------------------------
+
+12)  git status
+
+13)  git branch 
+
+14)  git  add  .
+
+	If we want to unstagged state from Stage area to workspace 
+
+15)	 git  restore --staged mytginfo.txt
+
+16)  git  status
+
+For directory addition
+ 
+17)  git add -A 
+
+New branch creation  (empty)  
+
+18)  git branch dev
+
+Can we create clone branch of existing branch ?
+
+19)  git checkout -b feature1
+
+How to create origin of Repository at local machine
+
+20)   git remote add origin git@github.com:cdtsbikaner/devopstg2023.git
+
+21)   git clone git@github.com:cdtsbikaner/devopstg2023.git
+
+22)   cd  devopstg2023/
+
+
+
+----------------
+
+git stash 
+
+gitignore
+
+git merge 
+
+git conflict 
+
+git rebase
+-----------------	
+	

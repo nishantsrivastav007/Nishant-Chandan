@@ -1,0 +1,64 @@
+Useful Commands :
+
+docker-compose  -f  docker-compose-wpsetup.yaml  up -d 
+docker-compose  -f  docker-compose-wpsetup.yaml  ps
+docker-compose  -f  docker-compose-wpsetup.yaml  top 
+
+Logs check in docker containers
+	docker-compose -f docker-compose-wpsetup.yaml logs -f
+
+Continue watching top command :
+
+	watch -n1 docker-compose -f  docker-compose-wpsetup.yaml top
+
+docker-compose  -f  docker-compose-wpsetup.yaml down
+
+-----------------------------------------------------------------------
+REDIS 
+  Mysql
+  
+  
+Nodejs
+  mongodb
+  
+Liferay
+  mysql
+  
+wordpress
+  mysql
+
+
+php
+ mysql
+ 
+ 
+ Telecom ->  3 + Linux (2)  +  AWS + Docker + Dockercompose + git
+  
+  5 ->  10+ 
+----------------------------- 
+  SSL certificate setup -> Lets Encrypt Website 
+	
+	Purchase Domain name from Godaddy
+	
+	Linux (AWS Linux)  ->  CERTBOT ( using Cronjob Renew certiciate of ssl automatically)
+	
+	https://certbot.eff.org/
+------------------------------	
+	CSR -->  Certificate authority  (CA)  
+	INTERMIEDIATE CERTICATE 
+	CHAIN 
+	ROOT CERTICATE 
+	ALT NAME 
+-----------------------------
+
+	A   -->    D
+	
+	A  ->  B  
+	
+	B --> C
+	
+	
+	A -> B -> C -> D 
+	
+	
+	

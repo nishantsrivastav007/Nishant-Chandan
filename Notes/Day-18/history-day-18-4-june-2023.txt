@@ -1,0 +1,80 @@
+[root@master ~]# history
+    1  hostname
+    2  vim /etc/hosts
+    3  cat  .ssh/authorized_keys
+    4  ssh-keygen  -t rsa
+    5  cat  /root/.ssh/id_rsa.pub
+    6  ls -l  .ssh/
+    7  cat /root/.ssh/id_rsa.pub
+    8  ssh root@wn1.tgindia.com
+    9  history
+   10  yum install docker -y
+   11  systemctl  start docker
+   12  systemctl  enable  docker
+   13  cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+   14  sysctl --system
+   15  vim  /etc/yum.repos.d/kubernetes.repo
+   16  yum clean all
+   17  yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+   18  systemctl start kubelet ; systemctl enable kubelet ; systemctl status kubelet
+   19  systemctl  status kubelet.service
+   20  ls -la
+   21  kubeadm init
+   22    mkdir -p $HOME/.kube
+   23    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   24    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   25  kubectl get no
+   26  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonsetk8s.yaml
+   27  cat https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+   28  kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+   29  kubectl get no
+   30  kubectl get nodes
+   31   kubeadm token create --print-join-command
+   32  kubectl get nodes
+   33  history
+[root@master ~]#
+
+
+
+
+		>  	->  STDOUT
+		>>  -> HereDoc (Append)
+		<<  -> STDIN
+		
+----------------------------------------------
+Shiv sharma question for you all : How can we import db while push repo on github
+-------------------------------------
+select tg;
+create table t1 ();
+--------------------------------------
+Gallera cluster mysql -> 3 machines 
+--------------------------------------
+
+mysqldump --databases db1 db2 db3 > dump.sql 
+------------------------------------------------
+dump.sql 
+
+create table t1();
+insert into t1 set id=1 , sname = 'test' ;
+insert into t1 set id=1 , sname = 'test' ;
+insert into t1 set id=1 , sname = 'test' ;
+insert into t1 set id=1 , sname = 'test' ;
+insert into t1 set id=1 , sname = 'test' ;
+
+--------------------------------------------------
+cp db.sql  -->  /var/lib/docker/volume/_efjejfjwjkwnckjwn/data/ 
+
+---------------------------------------------------
+
+GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+E: The repository 'http://pkg.jenkins.io/debian-stable binary/ Release' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+root@ip-172-31-19-233:/home/ubuntu#
+
+
+GPG =>  GnuPG (verify software) Checksum 

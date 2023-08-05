@@ -1,0 +1,68 @@
+Prometheus Serevr -->  Stand alone mode (Bare matal server) 
+
+Agent  -->  Node Exporter (install on remote linux machine)  [ Master Node of k8s , jenkins, worker node ] 
+
+9090  /9000
+----------------------------------------------------------------------------------------------------------------
+URL for prom installation : 
+Prometheus Installation on Linux: 
+ https://www.fosslinux.com/10398/how-to-install-and-configure-prometheus-on-centos-7.htm
+
+
+Grafana UI on Linux:
+
+https://www.fosslinux.com/8328/how-to-install-and-configure-grafana-on-centos-7.htm
+
+
+Granafa Template location (Free)
+https://grafana.com/grafana/dashboards/
+-----------------------------------------------------------------------------------------------------------
+on the same machine where prometheus monitoring server setup, We need to install GRAFANA.
+
+1) prometheus server setup on Linux (Cloud  / On prem)
+
+Download promethus latest / stable version 
+
+https://prometheus.io/download/
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
+Tomcat + java
+Elasticsearch    Logstash    Kisbana
+--------------------------------------------------------------------------------------------------------------
+
+
+Assignment-2
+ 
+1) Setup prom-server on Linux machine and configure it
+
+2) Ready a remote machine with Node Exporter 
+
+3)  Goto prom-server and setup Grafana UI interface on port 3000
+
+4)  Now configre and test inside Grafana for pulling data from prom-server 
+
+5)  Create Dashboard to monitor your server.
+
+--------------------------------------------------------------------------------------------
+RBAC 
+
+Daemonset  ( NODE ==  POD )
+
+1.Create yaml for prometheus 
+
+2.Create  grafana using yaml
+
+3.Create Service for access grafana and k8s monitoring dashboard of it.
+
+4.Alertmanager yaml 
+---------------------------------------------------------------------------------------------
+Aler-Manager  ?
+
+	->  With telegram. 
+
+
+
+  

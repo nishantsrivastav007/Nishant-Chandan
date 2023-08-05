@@ -1,0 +1,102 @@
+PVC 
+	Differnce between normal volume mount vs PVC is, No need to create directory strucutre on each and every worker node. So that we can save time. 
+	For PVC we need either EFS (AWS)  or  NFS v3 , NFSv4 (Pseudo Root) to demonstrate this lab session.  
+
+PV  ->  Persistant (Physical) Volume (Not namespace oriented)
+	STATUS :
+			Available 
+			Bound
+			Released
+			
+	RECLAIM POLICY:
+		Recycle 
+		Retain
+	
+
+PVC  ->  Namespace oriented 
+-------------------------------------------------
+Taint and Tolerance 
+
+Scheduling topologies :
+	1)  nodeName :
+		
+		nodeName:  wn1.tgindia.com
+		
+		Means -->  all pods will be create on wn1.tgindia.com
+		Drawback:  
+			one nodename one time 
+			we can not mention list of nodenames 
+			
+		spec:
+			nodeName:  wn1.tgindia.com
+			
+	
+	2)  nodeSelector:
+		You can apply label on the woker nodes so on the basis of the labels you can deploy th application.
+		
+		kubectl  label node wn1.tgindia.com disk=ssd
+		
+		kubectl  label node wn1.tgindia.com disk=sata
+		
+		
+		spec:
+			nodeSelector:
+				disk=ssd
+	We can not mentione multiple label for single application
+	
+	
+	3)  cordon and uncordon
+	
+	4)  taint and tolerance 
+
+taint:   is a key value pair for deploy applications in cluster.
+	key: x
+	value: 10
+
+
+kubectl taint  node wn1.tgindia.com high=intensive:NoSchedule
+
+
+kubectl taint  node wn1.tgindia.com high=intensive:NoSchedule-
+
+tolerations:
+   - key: high
+     operator: Equal
+     value: intensive
+     effect: NoSchedule
+
+
+Note:  We can use nodeSelector along with tolerance 
+
+
+spec:
+	nodeSelctor: 
+		disk:ssd
+tolerations:
+   - key: high
+     operator: Equal
+     value: intensive
+     effect: NoSchedule
+	 
+Effect:  
+			NoSchedule	
+			NoExecute :  Migration of POD from one node to another node.
+	 
+------------------------------------------------
+
+Port Forwarding
+
+
+firewall-cmd --zone=public --add-forward-port=port=80:proto=tcp:toport=32000 --permanent
+-----------------------------------------------
+
+Wordpress website in k8s deploy
+
+STS intro
+
+----------------------
+Jenkins + RBAC
+----------------------
+Promethus  + Grafana
+----------------------
+

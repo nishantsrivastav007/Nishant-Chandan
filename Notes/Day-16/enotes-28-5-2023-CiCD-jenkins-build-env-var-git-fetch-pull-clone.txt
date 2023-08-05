@@ -1,0 +1,74 @@
+POLL SCM  -->  Client (Developer laptop / Desktop) 
+
+Git hub action   -> build , test , deploy as sam as CI of jenkins 
+
+Webhooks (Event based & Server (jenkins) side handled.
+		  Same as Poll SCM Server action trigger for build , test , deploy)
+------------------------------------------------------------------------------
+git pull (or git fetch + git merge ) is how you update that local copy with new commits from the remote repository. git clone is used for just downloading exactly what is currently working on the remote server repository and saving it in your machine's folder where that project is placed.
+------------------------------------------------------------------------------
+
+1. git clone
+
+The clone command in git is used when you want to download an existing git repository to your local computer.
+
+2. git pull
+
+When you want to take changes or updates done by other developer/team member on git repository, you have to use git pull.
+
+In detail git pull is the command that fetches the content from a remote repository and integrates it with the local repository/branch. It is, in actuality, a combination of git fetch and git merge called in that order.
+
+3. git fetch
+
+Git "fetch" Downloads commits, objects and refs from another repository. It fetches branches and tags from one or more repositories.
+--------------------------------------------------------------------------------
+
+
+…or create a new repository on the command line
+
+
+echo "# webservertest" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin git@github.com:cdtsbikaner/webservertest.git
+git push -u origin master
+
+
+…or push an existing repository from the command line
+
+
+git remote add origin git@github.com:cdtsbikaner/webservertest.git
+git branch -M master
+git push -u origin master
+
+
+-------------------------------------------------------
+1) Apache web git repo on Github:
+
+git@github.com:cdtsbikaner/webservertest.git
+
+2)  Tomcat Apache App Server Git repo:
+
+git@github.com:cdtsbikaner/tomcat8.git
+
+----------------------------------------------------------
+Check remote branches and status of HEAD :
+
+	git branch -r
+
+Check commits and logs in git 
+
+	git log
+--------------------------------------------------------
+Next class 
+
+k8setup :
+
+	2 machine (EC2)
+		
+		master node  (4GB 2CPU 15GB HDD)
+		slave node  (4GB 2CPU 15GB HDD)
+
+Yaml 

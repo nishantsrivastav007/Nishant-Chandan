@@ -1,0 +1,171 @@
+SDLC :  Waterfall model 
+
+Jenkins |  BAMBOO (Attlacian:   Jira , Bitbucket , Wiki (Doc: Sop) ) 
+
+ - Open source project written in Java for CI / CD 
+ - CI   ->   git (PUSH) DEV
+ - CD -> Install / setup / config on any envrionment 
+ 
+	php 8.1  + mysql 5.6 + apache 2.2 
+ -----------------------------------------------
+ git -> Github  -> Dev Env  (Server (Cloud Machine 2GB / 30 gb hdd / i3) )
+		
+		DEV -> Developer Envierronment 
+			php 8.1  + mysql 5.6 + apache 2.2 
+		
+		TEST (Server (Cloud Machine 2GB / 30 gb hdd / i3) )
+			php 8.1  + mysql 5.6 + apache 2.2 
+		
+		
+		STAGE  (Server (Cloud Machine 2GB / 30 gb hdd / i3) )
+			php 8.1  + mysql 5.6 + apache 2.2 
+
+RELEASE ::.
+
+		UAT (Server (Cloud Machine 16 GB / 256 gb hdd / i9 8 core cpu) )
+			php 8.1  + mysql 5.6 + apache 2.2 
+--------------------------------		
+
+BUILD ::. Scheduled Activity ( UTC / CET )  Downtime for client
+
+
+		PROD  (Server (Cloud Machine 16 GB / 256 gb hdd / i9 8 core cpu) )
+			php 8.1  + mysql 5.6 + apache 2.2 
+			
+----------------------------------------
+For Jenkins machine we need machine config:  2Gb Ram + 2 min CPU 
+But we can use free machine i.e. 1gb ram + 1 cpu
+
+----------------------------------------
+
+Step-1  yum update -y   ( on both VMs)
+
+Step-2  Java install version java-11    ( on both VMs)
+
+Headless java package ?
+	- CLI version of java without any GUI tools are k/as headless kernel.
+	
+	A)	amazon-linux-extras install java-openjdk11
+	B)	yum -y install java-11-openjdk java-11-openjdk-devel
+
+
+
+			java (JDK) 
+				- jvm  (Translator)
+				- jre (java , javac , jre )
+	
+		 Set java_home environment ?     ( on both VMs)
+		 
+/usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64
+
+
+		 /root/.bash_profile
+		 
+		 source  ->  Compile any config file
+
+		 
+Step-2.1 	
+			Set hostname on each node (on all vms)
+			Update /etc/hosts  (Hostnames of all vms)
+			
+On master Env:		
+			 hostnamectl set-hostname master.tg.com
+		     bash
+			 hostname 
+
+On Slave Env:
+			 hostnamectl set-hostname master.tg.com
+		     bash
+			 hostname 
+-------------------------------
+For me only:
+		172.31.7.3   master.tg.com
+		172.31.4.149 test.tg.com
+-------------------------------
+			
+Step-2.2 
+Check which keysetup available on you EC2 instance currently
+
+	cat  .ssh/authorized_keys
+
+	ssh-keygen  -t ed25519
+	
+	cat /root/.ssh/id_ed25519.pub
+
+Now copy the public key and paste on Second instance inside file /root/.ssh/authorized_keys
+
+----------------------------------
+
+			generate public + private key for ssh without password.
+				- rsa  (lagecy)
+				- ed25519  (latest)
+				
+			Share key for ssh login [ For jenkins user + root ]
+			
+Step-3  Port open :  22  ,  8080		 ( on master node)
+		port on Slave : 22, 80  (on slave node)
+
+Step-4  jenkins repo download and gpg key   ( only on master node)
+
+Install jenkins via yum  / amazon 
+		
+ A) wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+	
+ B) rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+ C) yum upgrade
+
+
+ D) systemctl daemon-reload
+ 
+ E) yum install jenkins -y
+
+
+Step-4.0 
+		cat /etc/passwd  |  grep jenkins
+
+		usermod -s  /bin/bash jenkins
+		
+		su - jenkins 
+		
+Now login with root :
+	
+		Create jenkins user as sudouser 
+
+		vi  /etc/sudoers
+		
+Add this just after root line :
+
+		
+		jenkins ALL=(ALL) NOPASSWD: ALL
+
+
+Step-4.1 install some require packages :  (On both vms)
+
+	yum install git  docker  -y
+
+
+Step-4.2 
+			generate public + private key for ssh without password.
+				- rsa  (lagecy)
+				- ed25519  (latest)
+				
+			Share key for ssh login [ For jenkins user ]
+		
+ 
+	
+
+Step-5 Setup and config + add plungins 
+
+Step-6  Git password 
+		Dockerhub password 
+		
+		
+
+GC Logs 
+Tomcat setup -->  
+		/opt/tomcat/logs/*.zip
+	
+https://gceasy.io/
+

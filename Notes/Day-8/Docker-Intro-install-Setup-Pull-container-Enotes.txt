@@ -1,0 +1,193 @@
+Virtual Machine (VM) 
+
+	BASE Machine  (centos Linux)   -->  128 GB RAM , 256 SSD
+			
+				- Ubuntu (VM)	  8Gb-> Oracle Virtual Box / VMWware
+				- Centos (VM) 	  8Gb-> 
+				- Kali Linux (VM) 8Gb-> 
+				
+	Hypersior ->  REDHAT / CENTOS  ( KVM / Qemu)
+		
+		
+	Docker images can be create / launch by two ways:
+		- Dockerhub 
+		- Dockerfile 
+
+--------------------------------------------------------------------------
+Docker : 
+ Docker is an open-source engine that automates the deployment of any
+            application as a lightweight, portable, self-sufficient container that will
+            run virtually anywhere.
+
+ Docker containers can encapsulate any payload, and will run consistently on
+           and between virtually any server. The same container that a developer builds
+           and tests on a laptop will run at scale, in production*, on VMs, bare-metal
+           servers, OpenStack clusters, public instances, or combinations of the above.
+
+
+Step-1   yum update  -y
+
+Step-2   yum install docker -y
+
+Step-3    systemctl  status docker
+
+Step-4    systemctl  start  docker
+
+		   systemctl  enable  docker
+		   
+		    systemctl  status docker
+
+Step-5  docker engine and its lib / home directory setup under :
+
+	ls -l  /var/lib/docker/
+	
+		Volume  (Storage)
+		Network  (bridge)
+		OS 	(Layer architechture)
+		
+Step-6   Create account on hub.docker.com  (Dockerhub)
+
+	https://hub.docker.com/
+	
+	After sucessful login we can proceed with Step-7 
+		
+Step-7  Now login at Command line  (EC2) 
+
+		docker login 
+		
+		Username: 
+		Password: 
+		
+	ls -la 
+	
+Step-8  How to check docker images and running container (process) 
+
+
+		docker images
+
+		docker ps -a 
+		
+
+
+Step-9    Now pull image from Repository 
+
+	docker pull nginx
+
+	docker pull  alpine
+	
+	docker pull  centos
+	
+	docker pull ubuntu
+
+	
+Step-10 Launch container using Official Docker Image.
+
+
+	image pull
+	
+	container run
+	
+	container exec (Container login)
+	
+	
+	
+	 docker run --name "tgcontainer1" -dit  9ed4aefc74f6
+
+												ImageID
+												
+												
+		-d  ->  Dettach mode 
+
+		-i  ->  intractive mode
+		
+		-t  -> terminal 
+		
+		
+
+To get extit from container use ctrl  d   /  exit 
+
+
+Step-11
+
+when we launch container from  NGINX web server  , we found its home directory (NGINX web server)
+
+Debian
+Nginx  (http://) (Webserver + Load Balancer + Reverse Proxy) 
+		
+	Nginx home directory	->	/usr/share/nginx/html #
+
+echo "<h1> Write a messege </h1>" > index.html
+	
+	
+Redhat / Centos	
+httpd (http://)  ( Webserver + Tuneing of website)
+
+	home directory	-->   /var/www/html	
+
+
+Step-12   launch container with Volume and custom website data:
+
+cd /opt/
+
+mkdir mydata1
+
+cd mydata1/
+
+pwd
+
+vi index.html
+
+<h1> Write a messege </h1>" >
+
+vi  aboutus.html
+
+<h1> Write a messege </h1>" >
+
+ls -l
+
+pwd
+
+docker ps -a
+
+docker images
+
+docker run  --name "mynewserver1"  -dit  -v "/opt/mydata1:/usr/share/nginx/html" -P  6efc10a0510f
+
+docker ps -a 
+
+
+
+[root@ip-172-31-40-54 mydata1]# docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+6cf25199a393   6efc10a0510f   "/docker-entrypoint.…"   5 minutes ago   Up 5 minutes   0.0.0.0:32772->80/tcp, :::32772->80/tcp   mynewserver1
+
+
+
+docker rm -f  6cf25199a393
+
+
+Step12 :   Dockerfile
+
+Step13  :  
+
+		Entrypoint 
+		CMD
+		RUN
+		
+Step-14   Network 
+
+Step15  Volume 
+
+Step-16: Overlay2
+
+Step-17 :  Docker-Compose
+
+
+-----
+
+Question:  What is Docker sock file (Socket in Docker)
+
+https://www.educative.io/answers/var-run-dockersock
+
+
+/var/run/docker.sock is basically the Unix socket the Docker daemon listens on by default. It is also a tool used to communicate with the Docker daemon from within a container. Sometimes, containers need to bind mount the /var/run/docker.sock file.

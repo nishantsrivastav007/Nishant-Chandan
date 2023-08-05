@@ -1,0 +1,672 @@
+sudo -i
+*.pem  -->  *.ppk  (puttyKeyGen)
+sudo su -
+
+	Delhi  -->  Eye Close  --> Australia 
+	ec2-user	 				root         ec2-user
+	
+	sudo su -
+	
+	sudo su   ( Existing user home directory) 
+	
+	sudo su -
+	
+	
+dr-xr-xr-x     4          root      root     4096    Mar 21 22:01 boot
+  permission   SymLink    Owner     Group     Size     Date/Time  Dir
+  
+  
+  
+ls 
+ls -l 
+ls -la
+ls -ltr 
+
+ls -al 
+
+.     -> Current File System
+..    -> Prevous File System
+
+
+whoami
+id
+pwd
+cd 
+	.
+	..
+ls 
+ls -l
+ls -la
+ls -ltr
+
+mkdir 
+echo "hihi"  >  hello.txt
+
+touch bye.txt
+
+init 0
+----------------------------------------
+cat  hello.txt 
+tail -f  
+head
+tail 
+
+Apache Web server :
+	80   http://
+	443  https://
+
+RHEL ->  yum
+DEBIAN (ubuntu) -> apt-get 
+
+
+yum install httpd -y
+
+systemctl  status  httpd
+
+systemctl start httpd 
+
+Open port in Security group of AWS EC2 instance ( 80 / 443)
+
+netstat -plant 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+
+Customize webpage
+
+cd /var/www/html/
+
+echo "hello world"  > index.html
+
+systemctl restart httpd 
+
+Cross test on browser 
+
+	http://PUBLIC-IP
+	
+Read log frequently :
+
+cd  /var/log/httpd/
+
+ls -ltr 
+
+tail -f  access_log
+
+--------------------------------------
+Soft Link vs Hard Link :
+
+ln 
+	Soft Link  ->  Short-Cut	 (-s)
+	Hard Link  ->  Store at differnt Memory address
+
+inode number ( Unique Integer number) 
+
+ls -iltr
+
+Soft Link ( Differ  inode)
+
+ln -s  mydata.txt  /opt/
+
+/root/mydata.txt   -->    /opt/mydata.txt
+
+	If we delete origional file of symlink, then link file will treated Dangling link.
+
+Hard link :
+
+		- same inode number 
+		- If we delete origional of that link, hard link will work as actual file.
+----------------------------------------	
+network commands:
+	ifconfig
+	nmcli		(need to install when we read RPM command)
+	ip a 
+	ip addr
+	ip route
+	cat /etc/hosts
+	curl ifconfig.io
+	netstat -plant
+	man 
+	cat
+-------------------------------------	
+	less  
+
+	more
+	
+Linux FHS
+
+	df -hT
+				/  ->  Main file system 
+				/dev  -> HDD + USB + CDROM mount here 
+				/bin/ -> Binary command  (ls , pwd, mkdir)
+				/sbin/ -> system binary (OS)
+				/home/ ->  Local user create  (By default)
+					/home/tgIndia/
+					/home/Mahindra/
+				
+				/usr/  -> user file system  (Program files)
+		/var/  ->  variable file system  (Web Hosting) most of 		the servers are exist here. 
+		/srv/
+			
+				/etc/   ->  Configuraton file system (Config files)
+				/opt/  -> optional file system 
+				/mnt/  -> mount point 
+				/tmp/  -> temp file system  (30 days data can store) 
+				
+		mount point  -->  logical location where partition availble for access.
+			/			\
+		  Temp FS			Parmanent FS
+	
+				/lib/
+				/lib64/
+	Kernel ->  Itermediate unit (OS Software) Intraction between h/w and s/w.			
+			(Kernel is collection of multiple modules
+						Bluetooth module
+						wifi module
+						Graphics module)
+						
+	Linux   ->   Kernel 
+	
+	Linux Operating System  -> Kernel + applications
+------------------------------------------------------------------	
+	Unix :   HP-UX , IBM - AIX , Sun Microsystem , Apple ios
+------------------------------------------------------------------
+	du 
+		->  Disk Usages 
+		
+	Ex:    du  -hs  <File-or-Dir>
+		
+			du -hs  *
+				
+	pwd
+	
+	free -gh 
+	
+			(Diff b/w buffer and cache memory)
+	cat  /proc/meminfo
+	cat  /proc/cpuinfo
+	
+	id
+			uid	- user id 
+			gid - group id
+
+/etc/passwd
+
+root   :x:         0:     0     :root:   /root/:             /bin/bash
+Uname   Password   UID    GID    Gcos    Home Directory        shell
+							(Comment Area)
+
+User / Process
+		
+		0  ->  root (Super user)
+		1-999 -> process  (Mysql database, Apache webserver, Oracle)
+			
+				1 ->  PID ->  SystemD (init)
+		
+		1000 - 65k (Local Users range)
+/etc/passwd   
+			->  /sbin/nologin  (System)
+			->  /bin/bash  (User can login)
+				
+					>    -> STDOUTPUT operator
+					>>  -> Append operator
+					<  ->  STDINPUT operator
+
+
+cat  /etc/passwd |  grep  '/sbin/nologin'   >  tgIndiainfo.txt
+
+cat  /etc/passwd |  grep  '/bin/bash'   >>  tgIndiainfo.txt
+
+-------------------------------------------------------	
+ps aux  |  less 
+
+top 
+
+ps -> process 
+	a -> all
+	u -> user
+	x -> executable 
+	
+Daemon   ->  Background Process are k/as  daemons
+				(Antivirus / Clock / apache web server)
+Zoombiee -> 
+
+-------------------------------------------------------
+useradd    or  adduser
+
+passwd
+
+ls -l  /home/
+
+When we create user in Linux OS , where its password and structure create ?
+
+	Local user Schema -->   /etc/passwd
+	Password  -> 		    /etc/shadow 
+Hint for Shadow Encryption Algorithm -->  https://www.cyberciti.biz/faq/understanding-etcshadow-file/#:~:text=%246%20%E2%80%93%20The%20hashing%20algorithm%20prefix,Linux%20but%20not%20common%20elsewhere.
+
+	
+	group  ->  			  /etc/group
+	group password  -->  /etc/gshadow
+ 
+groupadd tgIndia
+--------------------------------------------------
+Permission in Linux OS
+	
+	r   read 		4
+	w   write		2
+	x	execute		1
+				-------
+	rwx				7
+					
+
+				USer/Owner    Group   	Others 
+
+
+- rw-  r--  r-- 1 root 			root    0 Apr  8 03:30 aa.txt
+   6    4    4
+
+d rwx  r-x r-x 2  root 			root    6 Apr  8 03:30 TgIndia
+   7    5   5
+
+Permission bits =  10 bits 
+
+
+			7		5		 0  
+			rwx    r-x		---
+		
+			7		7		7
+		rwx			rwx		rwx
+
+u		user
+g		group
+o		other
+
+a		all
+
++		allow
+-       deny
+=       assign
+--------------------------------------------------
+
+	chmod   -->  Change Modification of permission bit 
+	chown	 -> Change ownership of file / dir
+	chgrp	->  Change group ownership
+	
+Special permission :
+
+		Stricky bit
+		SGID
+		SUID
+---------------------------------------------------	
+		Group
+	/			\
+ P. Group		Supplimentry / Secondary Group
+	-g     				-G
+	(1)					(n)
+
+---------------------------------------------------
+	chattr
+	
+	usermod
+	
+	uname 
+	
+	timedatectl
+	
+	hostnamectl
+---------------------------------------------------	
+	cp  -> Copy command can be use for File / Dir inside a single system
+		-v  -> verbose mode (Show off)
+		-r  -> Recursive mode
+		-d  -> Directory
+		
+			
+			
+			
+			 touch mydata.txt
+			 cp -v  /root/mydata.txt  /opt/
+	
+	
+			mkdir  /root/TgIndia
+			touch /root/TgIndia/jaipur.txt
+			touch /root/TgIndia/data.txt
+	
+			cp  -rdv  /root/TgIndia    /opt/
+		
+	cp  -v  mydata.sh tgIndiainfo.txt  aa.txt mysbindata.txt  /opt/
+	
+-----------------------------------------------------
+	
+	rm  -> Remove can be use for both File / Dir
+	    -i  =>  intractive 
+		-f  ->  Forcefully
+		-r  -> recursive
+		
+		Intractive mode for deletion
+			rm -i mydata.sh
+	
+		Forcefully delete
+		
+			rm -f userinfo.sh
+		
+		
+mkdir  -p  A/B/C/D/
+touch  A/B/C/D/aa.txt		
+		Directory delete  (Intractive mode)
+		
+			rm -ir A/
+
+		Directory delete  (Forcefully mode)
+		
+		
+		
+			rm  -rf  Xyz
+------------------------------------------------------------------
+	 
+	mv  ->  Move from Source LOcation to Different Location (Differnt)
+			Rename file / directory  (Source and Destination Location are same)
+	
+			mv   FILE-Dir-WITH-SOURCE-LOCATION     DESTINATION
+			
+			 mv /root/Xyz/  /opt/
+
+			 mv  /root/mysbindata.txt   /root/mahinderdata.txt
+
+------------------------------------------------------------------
+	ssh-keygen  
+		 We can connect with clients with passphrase where we share our public.
+		 
+		 .ssh/authorized_keys
+		 .ssh/know_hosts
+		
+		-> Public Key 		-> Share with Client machines (Instances) 
+		-> Private Key
+			
+			
+			172.31.43.98   (master node)  ->  public key + private key 
+			
+					cd  .ssh
+					id_rsa    ->  400
+					id_rsa.pub -> 400
+			
+			172.31.36.96   (Client Node)
+	
+	
+	 ssh-keygen  -t rsa
+
+		
+	
+	scp
+	
+		scp mahinderdata.txt root@172.31.36.96:/tmp/
+		
+	rsync
+		incremental backup  (File System + Database (MySql))
+				1Gb ->  /data
+				2.5gb -> /data
+				5gb -> /data
+				
+		
+---------------------------------------------------------------
+Backup in linux OS:	
+	
+	
+	
+	Hard Backup  ->  cp  
+	Cold Backup  -> tar , rsync
+	
+tar  
+	-c   -> create 
+	-p -> preserve permission bits
+	-f  -> file 
+	-z  -> zipped (Shrink)
+
+	*.tar    ->   Simple Backup (Shrinking in less size)
+	*.tar.gz  ->  Compression (40%) 
+-------------------------	
+	du  -hs /etc/
+	35M
+	
+*.tar	
+
+	tar cpf etc_backup_20230409.tar  /etc/
+	
+	du -hs etc_backup_20230409.tar
+	
+*.tar.gz 
+	
+	 tar cpfz  mynew_etc_backup.tar.gz  /etc/
+
+		du -hs  *
+		
+		du -hs  /etc/
+		
+Untar (Extract) 
+
+		tar  xfh  mynew_etc_backup.tar.gz  
+		tar xfh  etc_backup_20230409.tar   -C  /opt/
+
+---------------------------------------------------	
+	cronjob
+	
+		task scheduling process , Thru this we can schedule any task on same server or on Remote server.
+cat  /etc/crontab
+
+	*      *     *  *  * user-name  command to be executed
+	min    hr   
+				
+
+			crontab  -e 
+	
+	
+	yum install mailx
+
+	tty
+	
+----------------------------------------------------------	
+	chattr
+			+i  => immutable 
+			-i => 
+			
+			+a  =>  append 
+			-a  => Non append
+
+			-R +i  =>  Recursively no files can create under any directory name 
+
+	lsattr
+	stat 
+
+chattr +i namesdata
+chattr -i namesdata
+Redonly mode
+	chattr +i +a namesdata
+mkdir Oracle
+chattr -R +i Oracle/
+
+----------------------------------------------------------------------------------------
+	ACL (Access Control list)
+		
+		getfacl
+		setfacl 
+----------------------------------------------------------------------------------------	 
+	rpm  =>  Red hat package manager equilient to Exe file windows OS.
+			its useful to install individual package (Software) in Redhat kind OS (Centos/ Amazon/ Fedora)
+		
+Query:
+rpm -qa  |  grep unrar
+
+
+Download rpm from internet
+
+	wget https://rpmfind.net/linux/rpmfusion/nonfree/el/updates/8/x86_64/u/unrar-6.1.7-1.el8.x86_64.rpm
+
+
+Install:
+		
+	rpm -ivh unrar-6.1.7-1.el8.x86_64.rpm
+
+Remove from server:
+	
+	rpm -e unrar-6.1.7-1.el8.x86_64
+
+
+Update package:
+	
+	rpm -Uvh unrar-6.1.7-1.el8.x86_64.rpm
+
+
+-----------------------------------------------------------------------------------------
+
+	yum / dnf   =>  Dependecny Resolver 
+
+		yum info 
+
+		yum install
+
+		yum localinstall 
+
+		yum remove 
+
+		yum update 
+	
+		yum upgrade 
+	
+		yum list 
+
+		yum clean all
+
+		rm -rf  /var/cache/yum/x86_64	
+------------------------------------------------------------------------------------------	
+	What is dnf ?	
+
+	What is curl command ?
+------------------------------------------------------------------------------------------
+	wget
+--------------------------------------------------------------------------------------------	
+	ps
+
+	ps aux
+ 
+	kill   -9  PID
+--------------------------------------------------------------------------------------------
+	amazon-linux-extras install epel -y
+	yum install stress -y
+
+stress --cpu 64 -v --timeout 120s
+
+Cache memory / Buffer Cache 
+
+
+	top
+					  5min   10min      15min 			=  SNS (AWS) , Nagios , Alert manager /  24x7 Site
+		 load average:  0.08, 	0.05,	 0.01
+		 (Compute Load Avg) =  CPU + RAM + Network + I/O
+
+		c  ->  show command path
+
+		1  ->  Show all cpu 
+		2 -> memory (RAM)
+
+	htop
+
+	
+--------------------------------------------------------------------------------------------
+	cut
+		-c		->  character(s)
+		-f		->  filed
+		-d		->  delimeter
+		
+		
+		cat /etc/passwd  |  cut  -d: 
+
+	awk 
+				awk -F '{print $1,$3}'   FILE-NAME
+		
+				df  -hT  |   awk -F '{print $1,$3}'  
+			
+				ps  aux |  awk -F '{print $1,"\t",$5}'
+
+	sed	
+			sed -e  's/devops/NGINX/g'  dummydata.txt
+
+					
+------------------------------------------------------------------------------------------	
+	netstat
+			netstat  -plant 
+			netstat  -plantu
+
+	nmap
+			nmap  -sT www.technicalguftgu.in
+	
+	nslookup
+				domaIN NAME  =>  technicalguftgu.in
+				FQDn (hostname)  =>  www.technicalguftgu.in
+						Forward lookup  ->   left to right 
+						Reverse Lookup  ->  Right to left
+						
+		.	->  *.in  -> *.technicalguftgu.in.    ->  www.technicalguftgu.in.  ->  http://www.technicalguftgu.in.
+																			  IP-Address
+			
+
+	host  (brief command of nslookup)
+			
+		
+	dig
+		 dig . NS
+		 dig  www.technicalguftgu.in  +short
+ 		 dig  www.technicalguftgu.in  +trace
+	
+---------------------------------------------	
+Case Study:
+
+Copy 150Gb data from Mumbai  to  USA server 
+	
+	scp  aa.tar.gz   199.55.66.77:/root/
+----------------------------------------------
+
+	screen
+			screen -S  mywork-1-1642023  
+
+			screen -ls 
+
+			screen -rd  mywork-1-1642023  
+		
+	last
+			last logined user access
+	
+	lastlog
+			detail last logined user activity
+	w
+			how many current session opened
+
+---------------------------------------
+	whoami
+		
+	which
+		
+	whereis
+		
+	grep  -> Pattern find (like operater in SQL)  
+	
+		cat  /etc/acpi/actions/power.sh | grep -i gnome --color
+		
+------------------------------------
+
+Git / Docker /  jenkins  /k8s 
+
+-------------------------------------------------------
+
+postfix 
+doecot 
+25    smtp 
+110   pop3
+143   imap
+
+We can not send email on gmail without using 465 / 525 / 993 
+
+--------------------------------------------------------
+Stricky bit
+SGID
+SUID
+-------------------------------------------------------
+

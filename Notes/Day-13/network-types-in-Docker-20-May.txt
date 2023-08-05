@@ -1,0 +1,60 @@
+Create custom Bridge Network:
+----------------------------------------------
+docker network  create --driver=bridge --subnet 192.168.100.0/24   --gateway 192.168.100.1 tgindia
+
+
+docker  network ls  
+
+docker network  inspect   tgindia
+
+docker run --name  c1  -dit  --network  tgindia  IMAGE-ID 
+
+docker network connect  tgindia  CONTINER-ID
+
+
+host:  
+  - No port mapping require 
+  - the same ip , hostname , other config files automatically mount on container ,   So that the container become.
+  - Not usually supports in windows / mac / sun solaris 
+  
+  Ex:  
+  Container-1
+			80:80
+  Container-2
+			80:80
+	
+	docker run --name c3  -dit  -p  80:80 nginx  --> Bridge
+	docker run --name c3  -dit  nginx  -> host
+	
+
+overlay network   
+	- ingress driver
+	- bridge driver
+
+ipvlan:
+	We can create own IP address mapping with one / any container and assign to it.
+	control both ipv4 and iv6
+	associate with base machine ip address pool (Parent ethernet -> eth0)
+
+-----------------------------------------------------------------------------------
+
+ref :  https://docs.docker.com/network/
+
+--------------------------------------------------------------------------------
+macvlan : 
+legacy application run
+seperate machines and each machine will treated as physical machine
+once we delete machine / delete macvlan all machine will be delete with its mac address. 
+
+Cybersecurity lab 
+Wifi Access Point cum Router -> 192.168.1.1  => AA:BB:CC:DD:EE:FF
+								192.168.1.2  to  192.168.1.254 
+
+Excluding the already assigned IP of your network can not release / allot to new container:
+
+docker network create -d macvlan \
+  --subnet=192.168.32.0/24 \
+  --ip-range=192.168.32.128/25 \
+  --gateway=192.168.32.254 \
+  --aux-address="my-router=192.168.32.129" \
+  -o parent=eth0 server1

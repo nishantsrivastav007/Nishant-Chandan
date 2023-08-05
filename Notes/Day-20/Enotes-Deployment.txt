@@ -1,0 +1,49 @@
+	PODS    
+	 | 
+  Replica Set (Automatically Pods launh)
+	 |
+ Deployment 
+-------------------------------------------------
+Deployment
+	1)  ReplicaSet  (DesireState maintain)
+	2)  Rolling update 
+Note:  Kindly use maxSurge for max pods creation with respect to desire state.
+https://www.bluematador.com/blog/kubernetes-deployments-rolling-update-configuration
+	
+	3)  Rollback (UNDO)
+------------------------------------------------
+
+Deployment :
+
+ -> In prod env we never create pods using Replicaset / Replica Controller 
+ -> We only use deployment, because RS does not allow rolling update and rollback
+ -> To avoid manual migration of software. So versioning also cover in deployment featute which support in ROLLBACK.
+ -> Deployment also type of API-resource like :  Pod, RS, RC 
+ 
+ 
+ 25% of total replicas will be created in deployment api-resource. 
+ Rest of the replicas (pods) will running with same old app and again 25% of remaining pods will created and so on .....
+ 
+ 
+ Deployment =  ReplicaSet  +  Rolling Update  + Roll Back 
+ 
+ kubectl  set image deployment myapp3 nginx=nginx:1.15 -n tg --record
+  kubectl  describe wn1.tgindia.com
+  kubectl  describe no wn1.tgindia.com
+  kubectl  describe po pod/myapp3-6dccb7ff87-6bhvq  -n tg
+  kubectl  describe po myapp3-6dccb7ff87-6bhvq  -n tg
+  kubectl  exec -ti po myapp3-6dccb7ff87-6bhvq -c nginx -n tg
+  kubectl  exec -ti myapp3-6dccb7ff87-6bhvq -c nginx -n tg
+  kubectl  exec -ti myapp3-6dccb7ff87-6bhvq -n tg
+  kubectl  exec -ti myapp3-6dccb7ff87-6bhvq -c  nginx -n tg
+  kubectl  exec -ti myapp3-6dccb7ff87-6bhvq -c  nginx bash -n tg
+  kubectl  set image deployment myapp3 nginx=nginx:1.16 -n tg --record
+  kubectl  exec -ti myapp3-57d98f69f6-6kk2p  -c  nginx bash -n tg
+  kubectl  set image deployment myapp3 nginx=nginx:1.18 -n tg --record
+  kubectl  exec -ti myapp3-648875bf4b-2rtml   -c  nginx bash -n tg
+  kubectl rollout history deployment myapp3 -n tg
+  kubectl  exec -ti myapp3-648875bf4b-2rtml   -c  nginx bash -n tg
+  kubectl rollout history deployment myapp3 -n tg
+  kubectl rollout undo deployment myapp3 -n tg --to-revision=2
+  kubectl  exec -ti myapp3-6dccb7ff87-76rqk   -c  nginx bash -n tg
+ 

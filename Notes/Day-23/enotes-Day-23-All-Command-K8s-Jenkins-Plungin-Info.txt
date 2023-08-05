@@ -1,0 +1,59 @@
+Jenkins 
+
+	-->  Custom image code (YAML)  [  Github  ]  [ bitbucket ] 
+	
+	-->  Custom image build -> Dockerhub [ Harbor ]
+	
+	
+On jenkins server at CLI :
+	make sure services installed and running :
+	
+	1) docker 
+		
+			yum install docker -y
+	
+	2) kubectl
+
+		cat  /etc/yum.repos.d/k8s.repo
+
+		yum install kubectl -y 
+		
+		
+	3)  git 
+	
+Plugins:
+
+	Kubernetes CLI Plugin
+	Kubernetes plugin
+	
+	
+	
+	CloudBees Docker Hub/Registry Notification
+	Docker Commons Plugin
+	
+	
+	GitHub Branch Source Plugin
+	GitLab Plugin
+	Pipeline: GitHub Groovy Libraries
+	Git plugin
+	Git client plugin
+
+
+Now goto wn2  and copy the config file and download it for Jenkins secret :
+
+cp /home/vikas/.kube/config  /home/ec2-user/
+
+
+------------------------------------------
+Edit in yaml (GITHUB) for secret  
+Edit in yaml (GITHUB) for secret  
+
+
+
+   imagePullSecrets:
+       - name: mydockerhub
+     containers:
+       - name: tomcat
+         image:  cdtsbikaner/tgtomcatapp1:v1
+         ports:
+          - containerPort: 8080

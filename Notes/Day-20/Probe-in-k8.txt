@@ -1,0 +1,54 @@
+Hint for probes --->  https://www.padok.fr/en/blog/kubernetes-probes#Probes_to_the_rescue!
+-----------------------------------------------------------------------
+livenessProbe (responsible for container of pod)
+	Is there a deadlock
+		|
+	       yes
+		|
+	 restart container /pod
+Ex:
+
+	spec:
+		restartPolicy: Never
+		containers:
+		livenessProbe:
+			httpGet:
+			  path:   /tgindia
+			  port:  8080
+			initialDelaySeconds: 15
+			periodSeconds: 10
+
+
+
+redinessProbe (responsible for Pod check )
+			Is POD ready to server traffic ?
+					  |
+					 NO
+					  |
+				Remove the POD from Service
+					LoadBalancer
+
+		redinessProbe:
+			httpGet:
+			  path:   /tgindia
+			  port:  8080
+			initialDelaySeconds: 15
+			periodSeconds: 10	
+
+		
+
+startupProbe (is container application has started ?)	
+							|
+							No
+							|
+						Keep liveness and rediness
+						Probe disabled
+
+
+
+		startupProbe:
+			httpGet:
+			  path:   /tgindia
+			  port:  8080
+			failureThreshold: 15
+			periodSeconds: 10	

@@ -1,0 +1,14 @@
+Deamonset ->
+
+If we want that one monitoring pod must be running on all the nodes in the cluster for all the time, So we should not use RS / Deployment. 
+
+DaemonSet ==> Number of replica(pod) ===  Number of nodes 
+-------------------
+Feature:  If we add new worker node in cluster then DS will automatically launch at newest one node.
+
+-> It does not use RS / Deployment 
+-> It wont deploy anything on MASTER NODE
+
+	Worker Node  ==  Replica of pods 
+	
+	

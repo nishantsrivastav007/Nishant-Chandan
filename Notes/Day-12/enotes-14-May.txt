@@ -1,0 +1,19 @@
+1) docker rm -f $(docker ps -f status=exited)
+
+2) Repo for java11 and extra packages (Liferay)
+
+docker pull cdtsbikaner/tgindia1:latest:v1
+
+https://www.liferay.com/downloads-community
+
+
+EPEL and REMI   -->  Php8, Jdk , Nodejs, Python3 
+
+
+3) Wordpress image with apache and php8: 
+
+docker pull cdtsbikaner/tgindia1:wordpressv1
+
+-------------------------------------------------
+
+

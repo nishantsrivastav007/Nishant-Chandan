@@ -1,0 +1,63 @@
+	 1001  kubectl  get no
+	 1002  kubectl  get ns
+	 1003  kubectl cluster-info
+	 1004  cat .kube/config
+	 1005  cat  /etc/kubernetes/admin.conf
+	 1006  kubectl  get no
+	 1007  cat .kube/config
+	 1008  hostname
+	 1009  kubectl  get no
+	 1010  ls -l  /etc/kubernetes/pki/
+	 1011  mkdir vikas
+	 1012  cd vikas/
+	 1013  openssl req -new -newkey rsa:2048 -nodes -keyout vika
+	 1014  ll
+	 1015  rm -f vika
+	 1016  openssl req -new -newkey rsa:2048 -nodes -keyout vikas.key -out vikas.csr
+	 1017  ls -ltr
+	 1018  hostname
+	 1019  openssl x509 -req -in vikas.csr -CA  /etc/kubernetes/pki/ca.crt -CAkey  /etc/kubernetes/pki/ca.key -CAcreate                                                               searial -out vikas.crt -days 90
+	 1020  openssl x509 -req -in vikas.csr -CA  /etc/kubernetes/pki/ca.crt -CAkey  /etc/kubernetes/pki/ca.key -CAcreate serial -out vikas.crt -days 90
+	 1021  ls -ltr
+	 1022  cp  vikas.crt /home/ec2-user/
+	 1023  kubectl  get-context
+	 1024  kubectl  --help
+	 1025  kubectl  config get-context
+	 1026  kubectl  config help
+	 1027  kubectl  config  --help
+	 1028  kubectl  config  view
+	 1029  kubectl  config get-contexts
+	 1030  kubectl  config  view
+	 1031  cd
+	 1032  cat  .kube/config
+	 1033  kubectl  config  view
+	 1034  cat  .kube/config
+	 1035  cd vikas/
+	 1036  ls -ltr
+	 1037  cat vikas.c
+	 1038  cat vikas.crt
+	 1039  cat vikas.crt  |  base64 -w0
+	 1040  cat vikas.crt
+	 1041  ls -l
+	 1042  cat vikas.key
+	 1043  kubectl api-resource  |  less
+	 1044  kubectl api-resources  |  less
+	 1045  vim crole-vikas.yaml
+	 1046  vim crolebind-vikas.yaml
+	 1047  cat crole-vikas.yaml
+	 1048  vim crolebind-vikas.yaml
+	 1049  cat ../ayu/crolebind.yaml
+	 1050  ls -l
+	 1051  cat  crole-vikas.yaml
+	 1052  cat  crolebind-vikas.yaml
+	 1053  cat ../ayu/clusterrole-ayu.yaml
+	 1054  kubectl create -f crole-vikas.yaml
+	 1055  kubectl create -f crolebind-vikas.yaml
+	 1056  kubectl get clusterrole
+	 1057  kubectl get clusterrole crolefor-vikas
+	 1058  kubectl describe  clusterrole crolefor-vikas
+	 1059  kubectl get clusterrolebindings
+	 1060  kubectl get clusterrolebindings crolebindvikas
+	 1061  kubectl desribe  clusterrolebindings crolebindvikas
+	 1062  kubectl describe  clusterrolebindings crolebindvikas
+	 1063  history

@@ -1,0 +1,97 @@
+Today's topic:
+
+
+	1.  AWS CLI
+	
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+	unzip awscliv2.zip
+
+	sudo ./aws/install
+		
+	./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+	
+---------------------------------------------------------------------------------------------------		
+
+ "VpcId": 	"vpc-0625274e798310b70"
+  "SubnetId": "subnet-0f7b36ba41e58f053"
+ "InternetGatewayId": "igw-0c48453f638fecf61"
+ "RouteTableId": "rtb-054530282a93f7121"
+"AssociationId": "rtbassoc-03d9a3698ce050425"
+
+ "KeyPairId": "key-02f7ffb57dedb0903"
+ "GroupId": "sg-0c4f77c74c35dfe4b"
+
+
+aws ec2 create-tags --resources vpc-0625274e798310b70 --tags Key=Name,Value=myvpc1
+-------------------------------------------------------------------------------------
+Create VPC + Subnet + Route Table  +  IGW  + and assosiation of Subnet to CIDR block 
+--------------------------------------------------------------------------------------
+
+aws ec2 describe-instances --profile harman
+
+aws  ec2  create-vpc  --cidr-block 10.0.0.0/16  --profile  harman
+
+aws ec2 create-tags --resources "vpc-0625274e798310b70" --tags Key=Name,Value=myvpc1
+
+aws  ec2  create-subnet  --vpc-id "vpc-0625274e798310b70" --cidr-block 10.0.1.0/24  --profile harman
+
+aws ec2 create-tags --resources "subnet-0f7b36ba41e58f053" --tags Key=Name,Value=mysubnet1 --profile harman
+
+
+
+
+aws ec2 create-internet-gateway --profile harman
+
+aws ec2 attach-internet-gateway --vpc-id "vpc-0625274e798310b70" --internet-gateway-id "igw-0c48453f638fecf61" --profile harman
+
+
+
+
+aws  ec2  create-route-table  --vpc-id vpc-082020ceb6dbe542a  --profile harman
+
+aws  ec2 associate-route-table  --route-table-id  rtb-0d1e07134ad3f1783   --subnet-id subnet-01e3e1c87d565fa8c  --profile harman
+
+
+aws   ec2  create-route --route-table-id rtb-0d1e07134ad3f1783 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-040a373b83eb5be72  --profile harman
+
+
+------------------------------------------
+Create Keypair and export as pem file 
+------------------------------------------
+aws  ec2  create-key-pair --key-name  Keypair  --query "KeyMaterial"  --output text >  "mine.pem"  --profile harman
+
+aws ec2  describe-key-pairs --profile harman
+
+------------------------------------------
+Security Group creation with VPC ID
+------------------------------------------
+
+ aws ec2 create-security-group --group-name mygrras-std-sg --description "Rules for my students" --vpc-id  vpc-082020ceb6dbe542a  --profile harman
+
+
+aws  ec2 authorize-security-group-ingress --group-id sg-0d9444fc7adc2526e --protocol tcp  --port  22 --cidr 0.0.0.0/0  --profile harman
+
+-------------------------------------
+How to get own public ip address
+-------------------------------------
+curl  ifconfig.io
+
+-------------------------------------
+Attach public IP on launch 
+
+aws ec2 modify-subnet-attribute --subnet-id subnet-01e3e1c87d565fa8c --map-public-ip-on-launch  --profile harman
+
+-------------------------------------
+
+Provisioning of new Instance with custom VPC + Subnet + Route Table + IGW + SG + Port open
+-------------------------------------
+
+aws ec2 run-instances --image-id "ami-0fdea1353c525c182" --count 1 --instance-type t2.micro --key-name tgIndia --security-group-ids "sg-0c4f77c74c35dfe4b" --subnet-id "subnet-0f7b36ba41e58f053" --profile  harman 
+
+---------------------------------------------
+Show all running instances :
+
+aws ec2 describe-instances   --profile harman
+
+----------------------------------------------

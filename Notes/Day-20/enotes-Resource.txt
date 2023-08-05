@@ -1,0 +1,16 @@
+ Limits:
+      cpu:     500m
+      memory:  128Mi
+    Requests:
+      cpu:        250m
+      memory:     64Mi
+
+
+4 Core CPU 
+	4000 milicore
+	
+	1000m --> pod
+	128mi --> pod
+----------------------------------------
+
+Kindly check YAML folder for the resouce allotment in POD

@@ -1,0 +1,44 @@
+Persistant Volume ?
+	-  Volatile storage (THIS IS AVAILBEL IN DOCKER)
+	-  non-volatile storage
+---------------------------------	
+Docker host 
+	- Docker REST API
+
+	- Docker Engine (images store -> containes)
+---------------------------
+	- Docker CLI   (laptop / desktop) and it can handle remote machines Docker host   
+
+	docker -H=172.17.1.31 -dit -P --name
+----------------------------	
+	
+We can implement storage by three ways :	
+	bind  (Legacy mode)
+	volume 
+	tmp memory
+----------------------------------
+
+docker volume create mydata1
+
+
+docker volume ls
+
+docker inspect mydata1
+
+[
+    {
+        "CreatedAt": "2023-05-20T04:23:29Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/mydata1/_data",
+        "Name": "mydata1",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+
+------------------------------------------
+
+nginx :  web server port ->80 
+Default web root directory :   /usr/share/nginx/html
+														index.html

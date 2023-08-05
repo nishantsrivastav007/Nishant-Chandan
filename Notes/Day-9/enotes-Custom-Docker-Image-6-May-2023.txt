@@ -1,0 +1,168 @@
+Docker hub 
+	- Pull image of Docker from DOCKERHUB.com and run containe.
+	- Dockerfile (Instruction) and follow instruction set and its Syntax 
+
+				FROM
+				
+				MAINTAINER
+				
+				WORKDIR
+				
+				RUN
+				
+				ENV
+				
+				EXPOSE
+				
+				CMD
+				
+				ENTRYPOINT
+				
+				ADD
+				
+				COPY
+				
+				ARG
+============================================================================================
+
+Command to delete multiple containers which are exited.
+
+		# docker rm -f $(docker ps -a -q state='exited')
+
+Command to delete multiple containers.
+
+		# docker rm -f $(docker ps -a -q)
+
+==============================================================================================
+
+What is Dockerfile ?
+
+	Text file with some instructions set like :  
+		- What image will pull
+		- Who will maintain custom image  ?
+		- Some steps to create /run application 
+			Ex:  
+				 Web Server ( httpd / apache2)   -> html / css /js / php
+			
+				 Application Server ( Tomcat Apache ) - java programming                       
+				 
+				 Python Application
+				 
+		- In a project directory there should be only one Dockerfile 
+		- We can launch one container from Dockerfile 
+-------------------------------------------------------------------------		
+( Web Server (httpd on Centos) Deployment)
+
+		Step-1 How to write simple dockerfile ?   
+		
+FROM centos:7.9.2009
+
+MAINTAINER "tg@gmail.com"
+
+ARG name="ekamjeet"
+
+ENV email="ekam@gmail.com"
+
+RUN yum update -y  && \
+   yum install httpd vim netstat net-tools  -y
+
+COPY  Dockerfile /root
+
+COPY index.html /var/www/html
+
+WORKDIR /var/www/html
+
+ENTRYPOINT ["/usr/sbin/httpd","-D","FOREGROUND"]
+
+
+
+		
+		Step-2 How to build Dockerfile
+		
+		docker build -t webapp:v1  .
+
+
+		Step-3 Run / Execute Container from Custom Image :  
+			
+				 docker run --name webapp1  -dit -P bc1a00ef8656
+		
+		Step-4 Tag Image with Online Repository 
+		
+			docker image tag 04bfedf38588 cdtsbikaner/tgindia1
+								IMAGE-ID
+		
+		Step-5 Commit Running container ID
+
+			 docker container commit  1c1193efe0a2  cdtsbikaner/tgindia1
+									   ContainerID 
+		Step-6 Now push image on Dockerhub
+		
+			docker login 
+			
+			
+			docker image push cdtsbikaner/tgindia1
+
+
+		Step-7 Cross Check on Dockerhub and test with Pull request.
+		
+-------------------------------------------------------------------------------		
+		
+
+Remember:
+	mount |  grep -ir  overlay2 
+	
+-------------------------------------------------------------------------------
+
+		ADD   -->   Copy  + Extract (Tar + Zip)
+		
+----------------------------------------------------------------------------------		
+Application Server Deployment:
+
+	Tomcat Apache 8 :
+		Require: java1.8
+		
+		yum install java-devel 
+		
+		Port Number : 8080 (TCP)
+		
+		
+		netstat   -plant 
+---------------------------------------------------------------------------------
+
+	PULL Centos Docker Image
+	
+	Install java packages 
+	
+	Download Tomcat Server tar file
+	
+	COPY and Extract 
+	
+	Test 
+----------------------------------------------------------------------------------
+	
+	RUN  ->  Used to build images and install application and apackages.
+			 Create new layer over existing layer.
+	
+	CMD  ->  Set default parameters that can be overridden when a container is running
+	
+
+	ENTRYPOINT  ->  Default parameter set and can not overridden when container running. 
+	
+-------------------------------------------------------------------------------------
+
+OFFICIAL IMAGE --> Rquired packages  -->  Push on DockerHub
+
+vanilla image
+1)  PULL customimagev1.1 
+
+2)  Use in multiple project while build from Jenkins
+
+---------------------------------------------------------
+Command Line Arguments:
+
+docker build -t test5 --build-arg x=200 --build-arg y=300 -f  dockerfile789 .
+
+---------------------------------------------------------
+
+
+	

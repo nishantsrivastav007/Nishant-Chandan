@@ -1,0 +1,34 @@
+1. Scheuled topologies in k8s :
+	- Pods (issue with pods were manually launch )
+	
+		- Replicaset / RC
+		
+		- Deployment 
+		
+		- Deamonset
+			
+	
+2. What is probe in k8s 
+	- types of probes
+
+3. Resouerce Allotment ( CPU  + Memory )
+
+
+
+-----------------
+Remaining topics 
+	
+	Secret in k8s  (sestive information save here : MySQL / Postgresql password)
+
+	Config map  (Password save in plain text)
+
+	Jenkins --> Pipeline project with Git + Docker + K8s + aws
+----------------------------
+	STS 
+	PVC
+	RBAC
+	Prometheus with grafana
+----------------------------
+
+
+

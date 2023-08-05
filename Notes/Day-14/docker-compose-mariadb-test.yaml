@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: cdtsbikaner/tgindia:mariadblatest
+    ports:
+      - "3306:3306"
+    volumes:
+      - "mydata1:/var/lib/mysql"
+    networks:
+      - mynetwork
+volumes:
+  mydata1:
+networks:
+  mynetwork:
+    driver: bridge
+
+

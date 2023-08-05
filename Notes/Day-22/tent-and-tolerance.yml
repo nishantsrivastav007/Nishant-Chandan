@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name:  myapp11
+ namespace: tg
+ labels:
+   env: test
+     #nodeName: wn2.tgindia.com
+spec:
+ containers:
+  - name: c2
+    image: centos
+ tolerations:
+   - key: high
+     operator: Equal
+     value: intensive
+     effect: NoSchedule

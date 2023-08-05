@@ -1,0 +1,123 @@
+EMAIL Server ( POSTFIX +  DOVECOT )  25 , 110, 143 
+-------------------------------------------------------------
+
+Tip:  https://www.pagerduty.com/   (Pagerduty can associate with Nagios) 
+-------------------------------------------------------------
+
+Resource check :  Storage , Network , Service  [ Host ]
+
+					Windows , Linux , Router , Switch, Printer 
+
+NRPE (Agent)   ---->    ssh-keygen   rsa / ed25519
+
+
+Nagios  --> Web interface +  CLI 
+--------------------------------------------------------------
+
+	Linux server --->  NAGIOS ( 80 )   192.168.1.101
+	
+		
+	
+	
+	Wn1   +  Mysql  +  jenkins 
+	
+	nrpe      nrpe       nrpe 
+	
+	192.168.1.101
+------------------------------------------------------------------
+Main Config file of Nagios Server  :
+
+		vi 	/usr/local/nagios/etc/nagios.cfg
+
+All templates and sample files are location under file system :
+
+
+		ls -l  /usr/local/nagios/etc/objects/
+
+--------------------------------------------------------------
+		Service status   			HOST sttaus  (Up	Down	Unreachable	Pending) 
+	
+Ok	Warning	Unknown	Critical	Pending								
+----------------------------------------------------------------------
+
+Download EPEL repo for linux to download NRPE and its NAGIOS plugins and install on REMOTE SERVER 
+
+1)	rpm -ivh  https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
+
+
+2)  yum --enablerepo=epel -y install nrpe nagios-plugins
+
+
+3)  vi  /etc/nagios/nrpe.cfg
+
+
+	[ Now get IP address of NAGIOS SERVER (Private IP) --> VPC  ELSE whitlist Security Group in each other  ]
+
+	
+		allowed_hosts=127.0.0.1,172.31.1.133
+		
+		
+4)  Finally, after adding the necessary tasks, we restart the services.
+
+systemctl enable nrpe.service
+systemctl start nrpe.service	
+
+
+5) MAKE SURE FIREWALL DISABLED at OS LEVEL and SELINUX IN DEISABLED.
+
+   FOR PRACTICE PURPOSE open all ports. 
+   
+---------------------------------------------------------
+
+Assignment1:   (CROSS CHECK SELINUX  + FIREWALL , Both shld be disabled and switch-off)
+
+1) Setup Nagios Server 
+
+2) Confgure Linux Remote Host with NRPE and NAGIOS plugin
+
+3) Now show data / stats of Remote server on NAGIOS interface.  
+		
+		( PUT LINUX MACHINES IN SAME GROUP )
+   
+   
+HINT: 
+
+Main Config file of Nagios Server  :
+
+		vi 	/usr/local/nagios/etc/nagios.cfg
+
+All templates and sample files are location under file system :
+
+
+		ls -l  /usr/local/nagios/etc/objects/  
+----------------------------------------------------------
+
+Containerization monitoring not possible. 
+
+-------------------------------------------------------------------------
+
+Prometheus ->	Containerization monitoring
+				Metrics  [CPU  + Memory + Container ]  Web interface + CLI
+		
+Grafana ==>  Visualize 
+-------------------------------------------------------------------------
+
+On-premises Linux server:
+
+1)   SELinux  --> Disabled 
+
+
+	vim  /etc/sysconfig/selinux
+
+	
+	SELINUX=disabled
+
+
+2)  Disable firewall for practice purpose ( For the time being )
+
+
+3)  yum install -y httpd php php-cli gcc glibc glibc-common gd gd-devel net-snmp openssl-devel wget unzip 
+
+
+Check Documentation shared in PDF file.
+------------------------------------------------------------------------------

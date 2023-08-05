@@ -1,0 +1,96 @@
+1. MiniKube ->  Master + Worker node   --> Yes install on laptop 
+   (Practice)
+
+2. AWS -> EKS  (Managed Service)
+
+3.   Project level (Master , Worker)
+
+		kubeadm ->  api-server , contoller , scheduler , etcd
+		kubelet	-> agent for worker node and communication with api-server
+		kubectl  -> command for deploy yaml , service create, cluster check 
+	
+------------------------------------------------------------
+MASTER NODE (Control Plane)
+	
+1)API-Server:
+ 
+*	HA for pod and worker-node, project level isolation ( Namespace )
+*   always communicate with worker node via kubelet agent 
+*   Authorization  (ROLE BASE ACCESS CONTROL) 
+*   Authentication	who can login in to my cluster
+		
+2)Controller:
+*   It will manage the desire state of application. 
+*	It will manage and make sure all the worker node and their pods must be running.
+
+3)Scheduler :
+	* Decises the best fit worker node for your application and its pod.
+	* It can save time for setup / deployement.
+
+4)ETCD: Distributed database which stores the complete cluster configuration  and cluster state in key and value pairs.
+
+-------------------------------------------------------
+
+
+Services:
+	secret: 
+	node-port:
+	nat: 
+
+	WORKER NODE  (Data Plane)  --> N Number 
+		
+			POD ( Multiple containers set k/as pod )
+			kubelet  (Agent)  
+		*	kubectl (Command to handle k8s deamon / service)
+			docker
+			kube-proxy
+-------------------------------------------------
+
+Softwware Defined Network (SDN)  -> Kube-Proxy
+
+-------------------------------------------------
+
+Reverse proxy :
+
+A reverse proxy is a server that sits in front of web servers (80/443) and forwards client (e.g. web browser) requests to those web servers. Reverse proxies are typically implemented to help increase security, performance, and reliability.
+
+Nginx :  Webserver 
+			1) Static web hosting 
+			2) Load Balancer 
+			3) Reverse Proxy 
+-------------------------------------------------
+HA-Proxy :  Load balancer + Reverse proxy 
+
+
+--------------------------------------------------
+Bare mattle ?
+--------------------------------------------------
+
+prometheus server  (monitoring)  +  Grafana
+(RBAC)  
+
+---------------------------------------------------
+172.31.4.165 master.tg.com
+172.31.2.46  wn1.tg.com
+
+
+/etc/hosts
+
+----------------------------------------------------
+
+Vagrant tool
+	OR
+Ansible
+
+
+-----------------------------------------------------
+wn1.tg.com
+
+[root@wn1 ~]# kubeadm join 172.31.4.165:6443 --token kw9d4k.l44fcziztb3br21a --discovery-token-ca-cert-hash sha256:2952821ac60c0ddb079cc82bd621a72e61aae08a4e700c4f8d457058d
+[preflight] Running pre-flight checks
+        [WARNING FileExisting-tc]: tc not found in system path
+error execution phase preflight: couldn't validate the identity of the API Server: invalid discovery token CA certificate hash: invalid hash "sha256:2952821ac60c0ddb079cc82bd621a72e61aae08a4e700c4f8d457058d", expected a 32 byte SHA-256 hash, found 28 bytes
+To see the stack trace of this error execute with --v=5 or higher
+[root@wn1 ~]#
+
+-------------------------------------------------------

@@ -1,0 +1,108 @@
+ - Disable scheduleding on worker node using corden 
+		kubectl  cordon wn2.tgindia.com
+		kubectl  uncordon wn2.tgindia.com
+		kubectl  get no
+
+ 
+ - Login in container of pod
+	
+		kubectl describe po myapp1 -n tg
+
+		kubectl  exec -ti myapp1 -c c1 bash  -n tg
+ 
+ - Volume attach within pod and container under the specific worker node
+ 
+		Create Directory of webapp under /opt/
+		and write code in yaml to point the Web root directory  to -->  wn1.tgindia.com
+		
+					OR
+					
+					PVC 
+ 
+ - Replica set [ replica controller  ] 
+	-> Manual scaling
+	spec: 
+		selector: 
+		matchLabels:
+		
+		
+kubectl api-resources |  less		
+		
+watch -n1 kubectl get po -n tg  -o wide
+-----------------------------------------------
+	replicas  (Desire State maintain)
+	template  ==> Pod defination
+	image ==> nginx  + tomcat + wordpress
+-----------------------------------------------
+How the RS knows that the number of pod for nginx + redis is 3 , if it become 2 then it will go down.
+	selector
+	label 
+
+kubectl scale replicaset rstest1 --replicas=6 -n tg
+		
+				OR 
+We can write replicas in yaml also and then we need to apply the changes 
+			
+		kubectl  apply  -f  rstest.yaml 
+	
+-----------------------------------------------------
+ - Service introduction  (NodePort ==>  default: 30000-32767 )
+ 
+kubectl get svc
+
+kubectl get svc  -n tg
+
+ 
+   Nodeport -->  Workernode port
+   port  -->  service port
+   targetport --> pod port
+   
+ -->
+ https://kubernetes.io/docs/concepts/services-networking/service/
+ --->
+ 
+ The available type values and their behaviors are:
+
+ClusterIP
+Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster. This is the default that is used if you don't explicitly specify a type for a Service. You can expose the Service to the public internet using an Ingress or a Gateway.
+
+
+NodePort
+Exposes the Service on each Node's IP at a static port (the NodePort). To make the node port available, Kubernetes sets up a cluster IP address, the same as if you had requested a Service of type: ClusterIP.
+
+LoadBalancer
+Exposes the Service externally using an external load balancer. Kubernetes does not directly offer a load balancing component; you must provide one, or you can integrate your Kubernetes cluster with a cloud provider.
+
+ExternalName
+Maps the Service to the contents of the externalName field (for example, to the hostname api.foo.bar.example). The mapping configures your cluster's DNS server to return a CNAME record with that external hostname value. No proxying of any kind is set up.
+
+------------------------------------
+Replicaset
+
+Deployment 
+
+Daemonset
+
+pvc
+------------------------------------
+
+
+	80 ====>  32000
+	
+-------------------------------------
+
+Max pods on worker node -->  pods:               110 =>  110x2 = 220 containers
+	
+	depemds upon resources 
+	
+Max Worker node --> 5000 in cluster 
+
+Max pod -> 1,50,000 pods in cluster
+
+Max containers in cluster -->  3 lakh container 
+--------------------------------------
+
+Set default namespace documentation :
+
+https://www.cloudytuts.com/tutorials/kubernetes/how-to-set-default-kubernetes-namespace/
+   

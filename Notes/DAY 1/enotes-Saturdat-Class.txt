@@ -1,0 +1,123 @@
+SDLC (S/w Devlopment life cyle) 
+
+1) Waterfall Model 
+2) Agile Methodology ?
+3) DevOps ?
+----------------------------------------------
+Attlacean 
+	- Jira ticket assign + SLACK  -->  Round Robin  
+	- Bamboo (Build for CI / CD)  [ jenkins]
+	- Bitbucket  (Github - Opensource) 
+	- Wiki Pages  (SOP)
+-----------------------------------------------
+
+SDLC (Waterfall Model) :
+	Development Team (ios/ Android / Java / Php / ASP)
+	 (Java 11.2  / mariadb 9.2  / Windows)
+		- Review Product / Software		(2 Month)
+		- Planning of Code				(1 month)
+		- Code 							(6 month)
+		- Build 						(1 month)
+		- Testing of code				(1 month)
+		- QA 							(2 month)
+		
+		13 Month   -> System Admin  ( server hosting) 
+-----------------------------------------------------------	
+	Sys Admins  (Linux(Centos 7)  , Mariadb 10.2 , Java 16)
+	
+		- Hosting of website / application / ios
+	
+	
+---------------------------------------------------------------
+
+Agile Method (Soft Developer):
+	- Jenkins ( CI / CD )
+
+Agile is an iterative approach to project management and software development that helps teams deliver value to their customers faster and with fewer headaches.
+
+-----------------------------------------------------------------
+DevOps :  (Software Development  +  IT Operations (Sysadmin / Cloud)
+
+	DEV Env.		->  16 GB + 8 Core CPU  (RHEL 7 + Java 11 +mariadb)
+	Test Env.		->  16 GB + 8 Core CPU(RHEL 7 + Java 11 +mariadb)
+	
+	ACC - Acceptance /  UAT 	->  16 GB + 8 Core CPU
+	PRE Prod					->  16 GB + 8 Core CPU
+	
+	PRODuction Env.				->  32 GB + 16 Core CPU
+
+DevOps Team 
+
+----------------------------------
+Development Team (ios/ Android / Java / Php / ASP)
+	 (Java 11.2  / mariadb 9.2  / Windows)
+	 
+		- Review Product / Software		
+		- Planning of Code				
+		- Code 		Git hub |  Bitbucket				
+		- Build 						
+		- Testing of code				
+		- QA 		
+		
+DevOps / System admin  (Infra Team)
+	
+			- Deploy 
+					CODE (pull from Github) -> Docker + k8s + jenkins 
+			- maintenance
+					SSH + Rundeck 
+			- monitoring 
+					Nagios | Prometheus + grafana 
+---------------------------------------------------
+-  sop / WIKI PAGES
+ 	
+DevOps Stages 
+
+	Continues Integrity
+	Continues Delivery
+	Continues Development 
+	Continues Testing 
+	Continues Operations 
+----------------------------------------------------
+DevOps:
+
+	Linux  (5 - 10 %)
+
+	AWS Platform:
+	
+	Git
+	
+	jenkins 
+	
+	Docker
+	
+	k8s 
+
+	Monitoring  (nagos  + promethues +Grafana) 
+	
+	
+
+
+-------------------
+
+SSH (TCP port --> 22)   -> MobaXtream  
+
+Super user in Linux -->  root
+Super user in Windows ->  Administrator 
+
+
+UNIX  (MACOS / HP UX / SUn Solaris)  
+  |	50% free shell (Command / binary / Lib)
+Linux OS (Ubuntu / Redhat / Centos / Mint / Android )
+	- CLI 
+ 
+sudo -i 
+pwd
+id
+date
+whoami
+nmcli
+init 0
+
+
+
+https://www.free-css.com/assets/files/free-css-templates/download/page263/mind.zip

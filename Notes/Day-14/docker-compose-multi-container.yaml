@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: cdtsbikaner/tgindia:mariadblatest
+    restart: always
+    volumes:
+      - "mydata1:/var/lib/mysql"
+    networks:
+      - mynetwork
+  app1:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - "mydata2:/usr/share/nginx/html"
+    networks:
+      - mynetwork
+volumes:
+  mydata1:
+  mydata2:
+networks:
+  mynetwork:
+    driver: bridge

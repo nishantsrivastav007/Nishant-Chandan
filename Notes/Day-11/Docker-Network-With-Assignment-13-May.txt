@@ -1,0 +1,223 @@
+Database: 
+
+	types:   structured (TABLE : rowxcol)		MySQL / Mariadb
+			 Semistructure (JSON / NOSQL) TEXT
+			 unstructured (Video / Audio / TEXT ) ->  Amazon S3://
+			 
+MySQL Enterprise Edition (Support)  5.6 / 8.0
+
+MariaDB (Mysql) [opensource/ freely] PROD / DEV
+
+Method-1 
+		Centos / Ubunutu
+		yum / apt-get install httpd / apache2
+		Website hosting 
+				+
+		yum / apt-get mysql / mariadb -y
+		
+		mysql configure 
+		
+		Apache + MySQL  =>  wordpress 
+
+Method-2 
+		 centos image pull
+		 vanilla image =>  httpd + net-tools + mariadb  +php
+		 
+		 FRONTEND(apache) 			BACKEND (Database)
+		 Container     				CONTAINER
+		
+		wordpress image 				mariadb image 
+		
+-------------------------------------------------------------
+MYSQL / Mariadb  
+
+	root 
+-------------------------------------------------------------
+Wordpress image 
+
+mariadb image 	/ MySQL  image 
+	
+	3306 (TCP)
+
+How to conenct with mysql cli inside container ?
+
+	mysql -u root -p
+	
+	 show databases ;
+	 create database tgindia ;
+	 show databases ;
+	 use tgindia ;
+	 show tables ;
+	 create table students ;
+	 create table students (sid int(10), sname varchar(255), email varchar(255) ) ;
+
+	 insert into students set sid =101, sname = 'harman', email='harman@gmail.com' ;
+	 select *  from students ;
+------------------------------------------------
+	 
+DBname:  tgindia 
+Password:  redhat
+IP :  172.17.0.3
+
+------------------------------------------------------------
+inspect command in Docker:
+------------------------------------------------------------
+Check ip in container when no packege of nmcli / ifconfig /ip a / ip add not found:
+
+ cat  /etc/hosts
+ 
+ ------------------------------------------------------------
+Driver in network of docker 
+1) bridge  (Bridge)
+2) macvlan
+3) overlay 
+4) none
+
+	docker inspect network 
+	
+	docker inspect volume 
+	
+	docker inspect container 
+	
+	docker inspect image 
+----------------------------------------------------
+Create custom network (Bridge type) in docker :
+----------------------------------------------------
+docker  network ls 
+
+docker  network  inspect   bridge 
+
+docker pull nginx:latest
+
+docker run  -dit  -P  nginx:latest
+ 
+docker  ps  -a   
+
+docker inspect  CONTAINER-ID
+-----------------------------------------------
+Create custom Bridge Network:
+----------------------------------------------
+ docker network  create tgindia --subnet 192.168.100.0/24   --gateway 192.168.100.1
+
+
+docker  network ls  
+
+docker network  inspect   tgindia 
+
+
+docker  pull mariadb:latest
+
+docker images 
+
+-------------------------------------------------
+
+Create or run Mariadb / MySQL Container using custom network :
+
+-------------------------------------------------
+
+
+docker run --name c2 --network tgindia -dit --env MARIADB_USER=root --env MARIADB_ROOT_PASSWORD=redhat -P  4af0c16be4b1
+
+docker ps -a 
+
+------------------------------------------------------------
+Connect custom network to running containers :
+
+	docker connect networn  tgindia  CONTAINER-ID
+
+----------------------------------------------------
+CMD vs RUN vs ENTRYPOINT
+
+	executable form 
+	
+		RUN [“apt-get”, “install”, “vim”]
+		ENTRYPOINT [“/bin/echo”, “TG”]
+		CMD [“/bin/echo”, “TG”]
+	
+	
+		ENV variable TGINDIA
+		ENTRYPOINT [“/bin/echo”, “$variable”]
+	
+	shell form 
+	
+		RUN apt-get -y update
+		CMD echo “TGINDIA”
+		ENTRYPOINT echo “TGINDIA”
+	
+	
+		ENV variable TG
+		ENTRYPOINT echo “$variable”
+		
+RUN 
+	RUN apt-get -y update (shell form)
+RUN [“apt-get”, “install”, “vim”] (exec form)
+
+------------------------------------------------------------
+Assignment1:
+IMAGE1	Centos:7 image pull
+		Packages install httpd php8/7 , net-tools, bind-utils, wget 
+		Pull Wordpress Package  (https://wordpress.org/download/)
+		80 443
+			
+	
+IMAGE2  Centos:7 images pull
+		PACKAGE install =>  mariadb  mariadb-server 
+		3306
+-------------------------------------------------------------
+Custom network design and assign / connect running or new containers with it.
+--------------------------------------------------------------
+-------------------------------------------
+
+1)  Web server Dockerfile and test
+
+2)  Tomcat Apache server dockerfile and test
+
+3)  Pull Centos 7 image and install some packages python + pip and test sample python code
+
+4)  NodeJS server setup on basic Centos 7 images with sample Nodejs application
+
+5) Liferay project ( Tomcat Apache server )
+		- Pull basic images of Centos7
+		- install some packages of Java
+		- Copy Liferay inside the /opt
+		- port 8080 , 8081 , 8085
+		
+		Wait for 5 minutes for deploy this CE project.
+6)  Assignment1:
+IMAGE1	Centos:7 image pull
+		Packages install httpd php8/7 , net-tools, bind-utils, wget 
+		Pull Wordpress Package  (https://wordpress.org/download/)
+		80 443
+			
+	
+IMAGE2  Centos:7 images pull
+		PACKAGE install =>  mariadb  mariadb-server 
+		3306
+
+
+
+----------------------------------------------
+			VERY IMPORTANT NOTES AND DOWNLOAD-------------- 
+
+1. Docker Network Details :
+
+https://docs.docker.com/config/containers/start-containers-automatically/#:~:text=Docker%20provides%20restart%20policies%20to,process%20managers%20to%20start%20containers.
+
+
+2. Docker inspect Details :
+
+https://docs.docker.com/engine/reference/commandline/inspect/
+
+3.  install java 11 on Centos 
+
+ https://phoenixnap.com/kb/install-java-on-centos
+ 
+4.Download AZUL Zulu
+
+https://www.azul.com/downloads/?version=java-11-lts&architecture=x86-64-bit&package=jdk#zulu
+
+5. Download Wordpress software :
+
+https://wordpress.org/download/
+
+------------------------------------------------------ 

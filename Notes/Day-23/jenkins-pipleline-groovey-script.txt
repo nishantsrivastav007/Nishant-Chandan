@@ -1,0 +1,28 @@
+node {
+	
+    stage("Git Clone"){
+       // git credentialsId: 'GithubPassword', url: 'https://github.com/cdtsbikaner/mytest.git'
+       checkout([$class: 'GitSCM', branches: [[name: '**']], extensions: [[$class: 'CheckoutOption', timeout: 10], [$class: 'CleanBeforeCheckout', deleteUntrackedNestedRepositories: true]], userRemoteConfigs: [[credentialsId: 'GithubPassword', url: 'https://github.com/cdtsbikaner/mytest.git']]])
+    }
+
+    stage("Docker build"){
+        sh 'docker version'
+       // sh 'docker rmi -f  $(docker images -a -q)'
+        sh 'docker build -t  tgindia:${BUILD_NUMBER} .'
+        sh 'docker images'
+        sh 'docker tag tgindia:${BUILD_NUMBER} cdtsbikaner/docker7may:${BUILD_NUMBER}'
+    }
+
+    withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+        sh 'docker login -u cdtsbikaner -p $PASSWORD'
+    }
+
+    stage("Push Image to Docker Hub"){
+        sh 'docker push  cdtsbikaner/docker7may:${BUILD_NUMBER}'
+    }
+    
+    stage("kubernetes deployment"){
+		sh 'scp mysql-deploy.yaml  root@master.tg.com:/root/'
+    }
+} 
+

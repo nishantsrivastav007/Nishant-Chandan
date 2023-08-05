@@ -1,0 +1,143 @@
+MASTER :
+
+kubectl get no
+kubectl get po
+kubectl get ns
+kubectl get po -n default
+kubectl get po -n kube-node-lease
+kubectl get po -n kube-public
+kubectl get po -n kube-system
+
+
+Describe all resources ?
+	
+	po
+	ns
+	no
+	secret
+	configmap
+	service -> network 
+--------------------------------------------	
+kubectl describe no wn1.tgindia.com
+kubectl events no  wn1.tgindia.com
+kubectl  api-resources  |  less
+--------------------------------------------
+kubectl  api-resources  |  less
+
+
+Some of the resources are namespace oriented and some are not !
+namespace ->  po , srv , configmap, ds, replicaset, deployment , secret
+
+out of the box from NS -> node, namespace, pvc
+
+
+LABELS ? 
+Filter resources using labels --> pods / nodes / namespace
+
+	wn1.tgindia.com - ssd
+	wn2.tgindia.com - megnatic 
+	
+NODE (WN) 
+ kubectl label node wn1.tgindia.com disk=ssd
+ 
+ kubectl describe no wn1.tgindia.com
+ 
+ kubectl  get node -L disk
+ 
+kubectl  label node wn1.tgindia.com disk-
+
+
+ 
+POD : 
+kubectl label po  coredns-5d78c9869d-dsw9t -n kube-system dnstype=bind
+
+kubectl get po -n  kube-system -L dnstype
+ 
+
+Unlabeled: 
+kubectl  label po coredns-5d78c9869d-dsw9t -n kube-system dnstype-
+
+-------------------------------------------------------------------------
+Total number of pods in k8s cluster --> 1,50,000  
+How many nodes can attach ===> 5000
+Total Container -> 3,00,000
+
+WN + mater resource ->  RAM + CPU  + HDD + NETWORK  
+------------------------------------------------------------------------- 
+kubectl cluster-info
+-------------------------------------------------------------------------
+
+yaml :
+
+
+vim mypods.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: myapp1
+ namespace: tg
+ labels:
+   env: stage
+   nodeName: wn1.tgindia.com
+spec:
+ containers:
+   - name: c1
+     image: nginx
+   - name: c2
+     image: redis
+
+-------------------------------------
+kubectl create ns tg
+-------------------------------------
+
+Duplicate Session open in new tab for master node :
+
+	watch -n1 kubectl get po -n tg
+			
+			OR
+	
+	kubectl get po -n tg -o wide  
+				
+------------------------------------
+kubectl create  -f mypods.yaml
+
+kubect get po -n tg
+
+kubectl  delete po myapp1  -n tg
+
+Changes in Yamls and again deploy yaml on master node :
+
+kubectl create  -f mypods.yaml
+
+kubectl describe no wn1.tgindia.com    (Kindly check name of pod from events section)
+
+kubectl describe po myapp1 -n tg		( Kindly check names of pods from here...)
+
+Login in containers via pod
+
+ kubectl  exec -ti myapp1 -c c1 bash  -n tg
+
+ kubectl  exec -ti myapp1 -c c2 bash  -n tg
+
+-------------------------------------------------
+IP assign only to POD not container.
+POD assign only two things :
+	/		\
+Storage 	Network
+-------------------------------------------------
+kubeadm token create --print-join-command
+ 
+ 
+
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+-----------------------------------
+Cgroup and Namespaces in k8s :
+
+In short, cgroups manage resources, and namespaces isolate and secure them. cgroups play a role in containerization solutions like Docker and Kubernetes, where they control container resource allocation and ensure isolation from the host and other containers.
+
+
+Microservices :
+
+A microservice is a software design pattern. It's something developers get excited about. They are related, but do not require each other. You can have a monolith deployed as a container, or you can have an unrestricted, non-containerized microservice.

@@ -1,0 +1,15 @@
+FROM manish2goood/mydockerclass:v1
+
+MAINTAINER "manish@gmail.com"
+
+RUN yum install unzip -y
+
+COPY mind.zip /var/www/html
+
+WORKDIR  /var/www/html
+
+RUN unzip /var/www/html/mind.zip
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/httpd","-D","FOREGROUND"]

@@ -1,0 +1,24 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://172.31.6.129:6443
+  name: kubernetes
+  
+  
+  
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+
+
+users:
+- name: kubernetes-admin
+  user:
+    client-certificate-data: CRT FILE DATA with encoded by base64
+    client-key-data: Private key file with encoded with base64 

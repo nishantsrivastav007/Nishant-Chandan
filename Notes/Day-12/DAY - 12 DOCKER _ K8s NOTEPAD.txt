@@ -1,0 +1,3 @@
+01:34:05	TRAINER:	docker pull cdtsbikaner/tgindia1:latest
+01:47:07	TRAINER:	http://35.154.237.94:32788/
+02:03:18	TRAINER:	http://35.154.237.94:32790/wordpress/

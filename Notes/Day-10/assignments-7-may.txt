@@ -1,0 +1,70 @@
+http://65.1.64.183     --->      http://65.1.64.183:32770/mind/        
+
+
+<script langugage="javascript">
+	location.href="http://65.1.64.183:32770/mind/"
+</script>
+
+
+<?php
+		
+?>
+
+
+---------------------
+Web server  (No OS Control on scripting) 
+		html / css /js  / php 
+	vs
+	
+App Server (Programming based )  ->  Tomcat Apache  ( OS control )
+	JAVA
+	PYTHON
+	RUBY
+	JSP 
+	SERVLET 
+	
+	
+Centos / Ubuntu 
+
+	NodeJS
+	
+	Python 
+	
+	
+	apache-tomcat-8.5.88/bin
+	
+	catalina.sh
+-------------------------------------------
+
+1)  Web server Dockerfile and test
+
+2)  Tomcat Apache server dockerfile and test
+
+3)  Pull Centos 7 image and install some packages python + pip and test sample python code
+
+4)  NodeJS server setup on basic Centos 7 images with sample Nodejs application
+
+5) Liferay project ( Tomcat Apache server )
+		- Pull basic images of Centos7
+		- install some packages of Java
+		- Copy Liferay inside the /opt
+		- port 8080 , 8081 , 8085
+		
+		Wait for 5 minutes for deploy this CE project.
+----------------------------------------------
+
+NETWORK 
+VOLUME 
+MULTIPLE CONTAINERS
+----------------------------------------------
+		
+	Database  container2
+	
+--------------------------------------------------
+We can not start / stop services inside docker container.
+Once we launch container it automatically invoke installed services inside it. 
+
+because container itself a process. 
+---------------------------------------------------
+
+		

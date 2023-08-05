@@ -1,0 +1,120 @@
+Docker Compose :
+
+ - Useful for multiple container launch
+ - Multiple container can communicate between each other
+ - We can scale manually in Docker compose
+ 
+How to check and Install docker compose ?
+
+docker --version
+ 
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+ 
+ chmod +x /usr/local/bin/docker-compose
+
+
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/sbin/docker-compose
+
+
+chmod u+x  /usr/sbin/docker-compose
+	
+
+What version is DC ?
+
+ docker-compose --version
+
+What is Compose version use in Yaml file at fist line ?
+
+	https://docs.docker.com/compose/compose-file/compose-versioning/
+
+What kind of syntax we will use for Docker compose to write ?
+
+Useful for Serilization. (Connectivity with other scripting )
+		k8s orcharatrastion tool manage via Yaml 
+		Docker can be communicate Yaml 
+		
+	1) yaml  / yml
+	2) json
+	
+
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+    depends_on:
+      - redis
+  redis:
+    image: redis
+volumes:
+  logvolume01: {}
+----------------------------------------------------------
+YAML / yml /yaml 
+
+yent another markup language.
+
+1)  key pair
+
+		key: "value"
+ 
+	Ex:  
+			name: "Ekamjeet singh"
+			age: "10"
+			email: "ekam@gmail.com"
+ 
+2)  Dictionary
+	
+	Ex:
+		---
+		countries
+			India: "Delhi"
+			Nepal: "Kathmandu"
+			Russia: 
+				- commoninRU: "alaska"
+				- commoninUS: "alaksa"
+			
+
+3)  List 
+		
+		fruits
+			- apple
+			- mango
+			- orange
+		ports:
+			- "32768:80" 
+			- "32769:8080"
+		
+		
+4)  Array
+			hosts: [ server1,server2, server3, server4 ]
+			fruits: [ apple,mango,orange]
+
+---------------------------------------------------------------------------
+
+How to check compatibility with Docker Engine ? 
+
+https://docs.docker.com/compose/compose-file/compose-versioning/
+
+Sample first docker compose code in yaml file :
+--------------------------
+docker-compose.yaml
+-------------------------
+version: '3'
+services:
+  myapp1:
+    image: nginx
+    ports:
+      - "8080:80"
+  myapp2:
+    image: nginx
+    ports:
+      - "8081:80"
+-------------------------
+docker-compose -f  docker-compose.yml up -d
+
+docker-compose ps
+-------------------------

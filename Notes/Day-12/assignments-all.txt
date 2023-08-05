@@ -1,0 +1,34 @@
+-------------------------------------------
+
+1)  Web server Dockerfile and test
+
+2)  Tomcat Apache server dockerfile and test
+
+3)  Pull Centos 7 image and install some packages python + pip and test sample python code
+
+4)  NodeJS server setup on basic Centos 7 images with sample Nodejs application
+
+5) Liferay project ( Tomcat Apache server )
+		- Pull basic images of Centos7
+		- install some packages of Java
+		- Copy Liferay inside the /opt
+		- port 8080 , 8081 , 8085
+		
+		Wait for 5 minutes for deploy this CE project.  
+		https://www.liferay.com/downloads-community
+		
+		
+6)  Assignment1:
+IMAGE1	Centos:7 image pull
+		Packages install httpd php8/7 , net-tools, bind-utils, wget 
+		Pull Wordpress Package  (https://wordpress.org/download/)
+		80 443
+			
+	
+IMAGE2  Centos:7 images pull
+		PACKAGE install =>  mariadb  mariadb-server 
+		3306
+
+
+
+----------------------------------------------
